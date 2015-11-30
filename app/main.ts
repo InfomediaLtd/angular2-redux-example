@@ -1,56 +1,24 @@
 import 'zone.js';
 import 'reflect-metadata';
 
+import { provide, bootstrap} from 'angular2/core';
+
+import {AppView} from "./components/app";
+
 import { createStore, combineReducers } from "redux";
-import {bind, provide, Injector} from 'angular2/core';
-
-import {bootstrap} from 'angular2/angular2';
-import {AppComponent} from "./components/app-component";
-
 import {AppStore} from "./app-store";
 
-var id = 0;
-let partReducer = (state:any = {}, action:any = {}) => {
-    switch(action.type) {
-        case "ADD_PART":
-            return {id: action.id, name: action.name};
-        default:
-            return state;
-    }
-};
-let partsReducer = (state = [], action:any = {}) => {
-    switch(action.type) {
-        case "ADD_PART":
-            return [
-                ...state,
-                partReducer(null, action)
-            ];
-        default:
-            return state;
-    }
-};
-let cartReducer = (state = [], action:any = {}) => {
-    switch(action.type) {
-        case "ADD_TO_CART":
-            return [
-                ...state,
-                action.id
-            ];
-        case "REMOVE_FROM_CART":
-            return state.filter((id) => (id!==action.id));
-        default:
-            return state;
-    }
-};
+import partsReducer from "./reducers/parts-reducer"
+import cartReducer from "./reducers/cart-reducer"
 
-const appStore = createStore(combineReducers({
+const appStore = new AppStore(createStore(combineReducers({
     parts: partsReducer,
     cart: cartReducer
-}));
+})));
 
-bootstrap(AppComponent,
+bootstrap(AppView,
     [
-        provide(AppStore, {useValue: new AppStore(appStore)})
+        provide(AppStore, {useValue: appStore})
         //AppStore
     ]);
 

@@ -1,5 +1,5 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
-import {bind, Injector} from 'angular2/core';
+
 import {AppStore} from "../app-store";
 
 @Component({
@@ -14,7 +14,7 @@ import {AppStore} from "../app-store";
     `,
     directives: [CORE_DIRECTIVES]
 })
-export class PartsComponent {
+export class PartsView {
     parts = [];
     cartLookup = {};
 
