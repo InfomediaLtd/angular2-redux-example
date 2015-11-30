@@ -1,6 +1,6 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
 import {bind, Injector} from 'angular2/core';
-import {AppStore} from "./app-store";
+import {AppStore} from "../app-store";
 
 @Component({
     selector: 'cart',

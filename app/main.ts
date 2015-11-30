@@ -5,7 +5,7 @@ import { createStore, combineReducers } from "redux";
 import {bind, provide, Injector} from 'angular2/core';
 
 import {bootstrap} from 'angular2/angular2';
-import {AppComponent} from "./app-component";
+import {AppComponent} from "./components/app-component";
 
 import {AppStore} from "./app-store";
 
