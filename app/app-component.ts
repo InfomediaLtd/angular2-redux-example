@@ -2,36 +2,17 @@ import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
 import {bind, Injector} from 'angular2/core';
 import {AppStore} from "./app-store";
 import {CartComponent} from "./cart-component";
+import {PartsComponent} from "./parts-component";
 
 @Component({
     selector: 'my-app',
     template: `
         <h3>Parts</h3>
-        <table>
-            <tr *ng-for="#part of parts">
-                <td><button href="" (click)="addPartToCart(part)">add</button></td>
-                <td>{{part.name}}</td>
-            </tr>
-        </table>
-        <cart/>
+        <parts></parts>
+        <h3>Ordered Parts</h3>
+        <cart></cart>
     `,
-    directives: [CORE_DIRECTIVES, CartComponent]
+    directives: [CORE_DIRECTIVES, PartsComponent, CartComponent]
 })
 export class AppComponent {
-    parts = [];
-
-    constructor(private appStore:AppStore) {
-
-        const setParts = () => this.parts = appStore.getState().parts;
-
-        appStore.subscribe(setParts);
-        // initial set of parts
-        setParts();
-
-    }
-
-    addPartToCart(part) {
-        this.appStore.dispatch({type:"ADD_TO_CART",id:part.id})
-    }
-
 }

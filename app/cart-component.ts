@@ -5,10 +5,9 @@ import {AppStore} from "./app-store";
 @Component({
     selector: 'cart',
     template: `
-        <h3>Ordered parts</h3>
         <table>
             <tr *ng-for="#part of parts">
-                <td><button href="" (click)="addPartToCart(part)">add</button></td>
+                <td><button href="" (click)="removePartFromCart(part)">remove</button></td>
                 <td>{{part.name}}</td>
             </tr>
         </table>
@@ -36,8 +35,8 @@ export class CartComponent {
         });
     }
 
-    addPartToCart(part) {
-        this.appStore.dispatch({type:"ADD_TO_CART",id:part.id})
+    removePartFromCart(part) {
+        this.appStore.dispatch({type:"REMOVE_FROM_CART",id:part.id})
     }
 
 }

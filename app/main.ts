@@ -36,6 +36,8 @@ let cartReducer = (state = [], action:any = {}) => {
                 ...state,
                 action.id
             ];
+        case "REMOVE_FROM_CART":
+            return state.filter((id) => (id!==action.id));
         default:
             return state;
     }
