@@ -5,7 +5,7 @@ import { provide, bootstrap} from 'angular2/core';
 
 import {AppView} from "./components/app";
 
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, bindActionCreators } from "redux";
 import {AppStore} from "./app-store";
 
 import parts from "./reducers/parts-reducer"
@@ -20,7 +20,8 @@ bootstrap(AppView,
         //AppStore
     ]);
 
-appStore.dispatch(addPart("Bumper"));
-appStore.dispatch(addPart("MP3 Player"));
-appStore.dispatch(addPart("Mirror"));
-appStore.dispatch(addPart("Hood"));
+const addPartAction = bindActionCreators(addPart, appStore.dispatch);
+addPartAction("Bumper");
+addPartAction("MP3 Player");
+addPartAction("Mirror");
+addPartAction("Hood");

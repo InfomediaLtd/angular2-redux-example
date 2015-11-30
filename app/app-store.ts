@@ -1,21 +1,25 @@
 import {Injectable} from "angular2/core";
 
+/**
+ * Wrapper for app store
+ */
 @Injectable()
 export class AppStore {
 
-    public store:any;
+    public getState;
+    public subscribe;
+    public dispatch;
 
     constructor(store:any) {
-        this.store = store;
+        this.getState = () => {
+            return store.getState();
+        };
+        this.subscribe = (subscribeFunction) => {
+            return store.subscribe(subscribeFunction);
+        };
+        this.dispatch = (action) => {
+            return store.dispatch(action);
+        };
     }
 
-    getState() {
-        return this.store.getState();
-    }
-    subscribe(subscribeFunction) {
-        return this.store.subscribe(subscribeFunction);
-    }
-    dispatch(action) {
-        return this.store.dispatch(action);
-    }
 }
