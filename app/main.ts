@@ -10,6 +10,7 @@ import {AppStore} from "./app-store";
 
 import parts from "./reducers/parts-reducer"
 import cart from "./reducers/cart-reducer"
+import {addPart} from "./actions/part-actions"
 
 const appStore = new AppStore(createStore(combineReducers({ parts, cart })));
 
@@ -19,7 +20,7 @@ bootstrap(AppView,
         //AppStore
     ]);
 
-appStore.dispatch({type:"ADD_PART", id:1, name: "Bumper"});
-appStore.dispatch({type:"ADD_PART", id:2, name: "MP3 Player"});
-appStore.dispatch({type:"ADD_PART", id:3, name: "Mirror"});
-appStore.dispatch({type:"ADD_PART", id:4, name: "Hood"});
+appStore.dispatch(addPart("Bumper"));
+appStore.dispatch(addPart("MP3 Player"));
+appStore.dispatch(addPart("Mirror"));
+appStore.dispatch(addPart("Hood"));

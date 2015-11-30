@@ -1,6 +1,7 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
 
 import {AppStore} from "../app-store";
+import {removeFromCart} from "../actions/cart-actions";
 
 @Component({
     selector: 'cart',
@@ -36,7 +37,7 @@ export class CartView {
     }
 
     removePartFromCart(part) {
-        this.appStore.dispatch({type:"REMOVE_FROM_CART",id:part.id})
+        this.appStore.dispatch(removeFromCart(part.id))
     }
 
 }
