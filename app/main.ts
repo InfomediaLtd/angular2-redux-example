@@ -8,13 +8,10 @@ import {AppView} from "./components/app";
 import { createStore, combineReducers } from "redux";
 import {AppStore} from "./app-store";
 
-import partsReducer from "./reducers/parts-reducer"
-import cartReducer from "./reducers/cart-reducer"
+import parts from "./reducers/parts-reducer"
+import cart from "./reducers/cart-reducer"
 
-const appStore = new AppStore(createStore(combineReducers({
-    parts: partsReducer,
-    cart: cartReducer
-})));
+const appStore = new AppStore(createStore(combineReducers({ parts, cart })));
 
 bootstrap(AppView,
     [
