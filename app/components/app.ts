@@ -3,6 +3,7 @@ import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
 import {AppStore} from "../app-store";
 import {PartsView} from "./parts";
 import {CartView} from "./cart";
+import {UsersView} from "./users";
 
 import * as CartActions from "../actions/cart-actions";
 
@@ -18,8 +19,11 @@ import * as CartActions from "../actions/cart-actions";
         <hr/>
         <h3>Ordered Parts</h3>
         <cart></cart>
+        <hr/>
+        <h3>Users</h3>
+        <users></users>
     `,
-    directives: [CORE_DIRECTIVES, PartsView, CartView]
+    directives: [CORE_DIRECTIVES, PartsView, CartView, UsersView]
 })
 export class AppView {
 
