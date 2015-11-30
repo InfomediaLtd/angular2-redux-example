@@ -1,0 +1,15 @@
+build
+dist
+jspm_packages
+node_modules
+dev
+out
+
+*.iml
+.idea/
+.idea_modules/
+
+**.js
+**.js.map
+
+!config.js
