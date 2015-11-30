@@ -46,7 +46,6 @@ const appStore = createStore(combineReducers({
     cart: cartReducer
 }));
 
-console.log(appStore);
 bootstrap(AppComponent,
     [
         provide(AppStore, {useValue: new AppStore(appStore)})
