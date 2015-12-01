@@ -47,41 +47,44 @@ export class AppView {
         private _userActions:UserActions) {
 
         _appStore.subscribe(() => {
+            var state = _appStore.getState();
 
-            // parts
-            this.parts = _appStore.getState().parts;
-
-            // cart
-            if (this.cart !== _appStore.getState().cart) {
-                var partsById = _appStore.getState().parts.reduce((map, part) => {
-                    map[part.id] = part;
-                    return map;
-                }, {});
-                this.partsInCart = _appStore.getState().cart.reduce((partsInCart, id) => {
-                    partsInCart.push(partsById[id]);
-                    return partsInCart;
-                }, []);
-                this.partIdsInCart = _appStore.getState().cart.reduce((map, id) => {
-                    map[id] = true;
-                    return map;
-                }, {});
+            this.parts = state.parts;
+            if (this.cart !== state.cart) {
+                this.onCartChange(_appStore);
             }
-
-            // users
-            this.users = _appStore.getState().users;
+            this.users = state.users;
 
 
         });
 
         _appStore.dispatch(_userActions.fetchUsers());
 
-        // add initial parts
+        this.createInitialSetOfParts(_appStore);
+
+    }
+
+    private createInitialSetOfParts(_appStore) {
         _appStore.dispatch(this._partActions.addPart("Bumper"));
         _appStore.dispatch(this._partActions.addPart("MP3 Player"));
         _appStore.dispatch(this._partActions.addPart("Mirror"));
         _appStore.dispatch(this._partActions.addPart("Hood"));
+    };
 
-    }
+    private onCartChange(_appStore) {
+        var partsById = _appStore.getState().parts.reduce((map, part) => {
+            map[part.id] = part;
+            return map;
+        }, {});
+        var computed = _appStore.getState().cart.reduce(({partsInCart,partIdsInCart}, id) => {
+            partsInCart.push(partsById[id]);
+            partIdsInCart[id] = true;
+            return {partsInCart,partIdsInCart};
+        }, {partsInCart:[],partIdsInCart:{}});
+        this.partsInCart = computed.partsInCart;
+        this.partIdsInCart = computed.partIdsInCart;
+
+    };
 
     addPartToCart(id) {
         this._appStore.dispatch(this._cartActions.addToCart(id));
