@@ -12,16 +12,15 @@ export class UserActions {
 
     fetchUsers() {
         const BASE_URL:string = "http://jsonplaceholder.typicode.com/users";
-        const _http = this._http;
-        return function (dispatch) {
+        return (dispatch) => {
             dispatch(requestUsers());
 
-            _http.get(`${BASE_URL}`)
+            this._http.get(`${BASE_URL}`)
                 .map(result => result.json())
                 .map(json => {
                     dispatch(receiveUsers(json));
                 }).subscribe();
-        }
+        };
     }
 
 }
