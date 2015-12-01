@@ -14,28 +14,33 @@ import {UserView} from "../views/user";
 @Component({
     selector: 'my-app',
     template: `
-        <h3>Parts</h3>
-        <parts
-            [parts]="parts"
-            [unavailable]="partIdsInCart"
-            (add-to-cart)="addPartToCart($event)">
-        </parts>
-        <hr/>
-        <h3>Ordered Parts</h3>
-        <cart
-            [parts]="partsInCart"
-            (remove-from-cart)="removePartFromCart($event)">
-        </cart>
-        <hr/>
-        <h3>Users</h3>
-        <users
-            [users]="users"
-            (current)="setCurrentUser($event)">
-        </users>
-        <hr/>
-        <h3>Current User</h3>
-        <user [data]="currentUser">
-        </user>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Users</h3>
+                <users
+                    [users]="users"
+                    (current)="setCurrentUser($event)">
+                </users>
+                <hr/>
+                <h3>Current User</h3>
+                <user [data]="currentUser">
+                </user>
+            </div>
+            <div class="col-md-6">
+                <h3>Parts</h3>
+                <parts
+                    [parts]="parts"
+                    [unavailable]="partIdsInCart"
+                    (add-to-cart)="addPartToCart($event)">
+                </parts>
+                <hr/>
+                <h3>Cart</h3>
+                <cart
+                    [parts]="partsInCart"
+                    (remove-from-cart)="removePartFromCart($event)">
+                </cart>
+            </div>
+        </div>
     `,
     directives: [CORE_DIRECTIVES, PartsView, CartView, UsersView, UserView]
 })
@@ -48,11 +53,10 @@ export class AppView {
     private users = [];
     private currentUser = null;
 
-    constructor(
-        private _appStore:AppStore,
-        private _partActions:PartActions,
-        private _cartActions:CartActions,
-        private _userActions:UserActions) {
+    constructor(private _appStore:AppStore,
+                private _partActions:PartActions,
+                private _cartActions:CartActions,
+                private _userActions:UserActions) {
 
         _appStore.subscribe(() => {
             var state = _appStore.getState();
@@ -87,8 +91,8 @@ export class AppView {
         var computed = _appStore.getState().cart.reduce(({partsInCart,partIdsInCart}, id) => {
             partsInCart.push(partsById[id]);
             partIdsInCart[id] = true;
-            return {partsInCart,partIdsInCart};
-        }, {partsInCart:[],partIdsInCart:{}});
+            return {partsInCart, partIdsInCart};
+        }, {partsInCart: [], partIdsInCart: {}});
         this.partsInCart = computed.partsInCart;
         this.partIdsInCart = computed.partIdsInCart;
 
@@ -97,9 +101,11 @@ export class AppView {
     addPartToCart(id) {
         this._appStore.dispatch(this._cartActions.addToCart(id));
     }
+
     removePartFromCart(id) {
         this._appStore.dispatch(this._cartActions.removeFromCart(id))
     }
+
     setCurrentUser(id) {
         this._appStore.dispatch(this._userActions.setCurrentUser(id))
     }
