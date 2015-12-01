@@ -61,7 +61,7 @@ export class AppView {
             }
 
             // users
-            this.users = _appStore.getState().users.list;
+            this.users = _appStore.getState().users;
 
         });
 

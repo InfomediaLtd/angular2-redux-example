@@ -3,8 +3,9 @@ import {Component, CORE_DIRECTIVES, Input, ChangeDetectionStrategy} from 'angula
 @Component({
     selector: 'users',
     template: `
+        <span *ng-if="users && users.isFetching">Loading users...</span>
         <table>
-            <tr *ng-for="#user of users">
+            <tr *ng-for="#user of users.list">
                 <td>{{user.name}}</td>
             </tr>
         </table>
@@ -13,5 +14,5 @@ import {Component, CORE_DIRECTIVES, Input, ChangeDetectionStrategy} from 'angula
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UsersView {
-    @Input() users = [];
+    @Input() users = {};
 }
