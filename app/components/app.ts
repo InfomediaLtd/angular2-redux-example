@@ -1,9 +1,9 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
 
 import {AppStore} from "../app-store";
-import {PartsView} from "./parts";
-import {CartView} from "./cart";
-import {UsersView} from "./users";
+import {PartsView} from "../views/parts";
+import {CartView} from "../views/cart";
+import {UsersView} from "../views/users";
 
 import * as CartActions from "../actions/cart-actions";
 import {UserActions} from "../actions/user-actions";
