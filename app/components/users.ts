@@ -1,7 +1,4 @@
-import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter} from 'angular2/angular2'
-
-import {AppStore} from "../app-store";
-import {UserActions} from "../actions/user-actions";
+import {Component, CORE_DIRECTIVES, Input, ChangeDetectionStrategy} from 'angular2/angular2'
 
 @Component({
     selector: 'users',
@@ -12,17 +9,9 @@ import {UserActions} from "../actions/user-actions";
             </tr>
         </table>
     `,
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES],
+    changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UsersView {
     @Input() users = [];
-
-
-    constructor(appStore:AppStore, userActions:UserActions) {
-        appStore.subscribe(() => {
-            this.users = appStore.getState().users.list;
-        });
-
-        appStore.dispatch(userActions.fetchUsers());
-    }
 }

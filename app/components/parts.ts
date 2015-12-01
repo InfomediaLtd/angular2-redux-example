@@ -1,4 +1,4 @@
-import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter} from 'angular2/angular2'
+import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/angular2'
 
 import {AppStore} from "../app-store";
 
@@ -12,7 +12,8 @@ import {AppStore} from "../app-store";
             </tr>
         </table>
     `,
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES],
+    changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class PartsView {
     @Input() parts = [];

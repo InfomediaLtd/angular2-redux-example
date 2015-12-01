@@ -1,4 +1,4 @@
-import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
+import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/angular2'
 
 import {AppStore} from "../app-store";
 import {removeFromCart} from "../actions/cart-actions";
@@ -8,18 +8,20 @@ import {removeFromCart} from "../actions/cart-actions";
     template: `
         <table>
             <tr *ng-for="#part of parts">
-                <td><button href="" (click)="removePartFromCart(part)">remove</button></td>
+                <td><button (click)="removeFromCart.next(part.id)">remove</button></td>
                 <td>{{part.name}}</td>
             </tr>
         </table>
     `,
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES],
+    changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class CartView {
     cart = [];
-    parts = [];
+    @Input() parts = [];
+    @Output() removeFromCart: EventEmitter = new EventEmitter();
 
-    constructor(private appStore:AppStore) {
+    /*constructor(private appStore:AppStore) {
         appStore.subscribe(() => {
             if (this.cart !== appStore.getState().cart) {
                 this.cart = appStore.getState().cart;
@@ -34,10 +36,8 @@ export class CartView {
                 },[]);
             }
         });
-    }
+    }*/
 
-    removePartFromCart(part) {
-        this.appStore.dispatch(removeFromCart(part.id))
-    }
+
 
 }
