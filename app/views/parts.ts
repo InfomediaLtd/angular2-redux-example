@@ -1,6 +1,6 @@
 import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/angular2'
 
-import {AppStore} from "../app-store";
+import {AppStore} from "../stores/app-store";
 
 @Component({
     selector: 'parts',

@@ -9,7 +9,7 @@ import {AppView} from "./components/app";
 import { createStore, combineReducers, bindActionCreators, applyMiddleware } from "redux";
 import thunkMiddleware from 'redux-thunk'
 
-import {AppStore} from "./app-store";
+import {AppStore} from "./stores/app-store";
 
 import parts from "./reducers/parts-reducer"
 import cart from "./reducers/cart-reducer"
