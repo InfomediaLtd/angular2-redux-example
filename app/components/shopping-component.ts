@@ -42,7 +42,8 @@ export class ShoppingComponent {
 
             this.parts = state.parts;
             if (this.cart !== state.cart) {
-                this.setCartProperties(_appStore);
+                this.cart = _appStore.getState().cart;
+                this.updatePartsInCart(_appStore);
             }
         });
 
@@ -57,7 +58,7 @@ export class ShoppingComponent {
         _appStore.dispatch(this._partActions.addPart("Hood"));
     };
 
-    private setCartProperties(_appStore) {
+    private updatePartsInCart(_appStore) {
         var partsById = _appStore.getState().parts.reduce((map, part) => {
             map[part.id] = part;
             return map;
@@ -69,8 +70,6 @@ export class ShoppingComponent {
         }, {partsInCart: [], partIdsInCart: {}});
         this.partsInCart = computed.partsInCart;
         this.partIdsInCart = computed.partIdsInCart;
-
-        this.cart = _appStore.getState().cart;
     };
 
     addPartToCart(id) {
