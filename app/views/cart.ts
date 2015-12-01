@@ -3,7 +3,7 @@ import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetection
 @Component({
     selector: 'cart',
     template: `
-        <p *ng-if="!parts || parts.length===0" class="text-muted">No parts in cart :(</p>
+        <p *ng-if="!parts || parts.length===0" class="text-muted">Empty :(</p>
         <table>
             <tr *ng-for="#part of parts">
                 <td>
