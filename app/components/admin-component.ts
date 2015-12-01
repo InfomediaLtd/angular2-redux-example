@@ -17,8 +17,7 @@ import {UserView} from "../views/user-view";
         </users>
         <hr/>
         <h3>Current User</h3>
-        <user [data]="currentUser">
-        </user>
+        <user [data]="currentUser"></user>
     `,
     directives: [CORE_DIRECTIVES, UsersView, UserView]
 })
