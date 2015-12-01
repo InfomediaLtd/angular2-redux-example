@@ -7,18 +7,23 @@ import {AppStore} from "../app-store";
     template: `
         <table>
             <tr *ng-for="#part of parts">
-                <td><button [disabled]="!!unavailable[part.id]" href="" (click)="addToCart.next(part.id)">add</button></td>
+                <td>
+                    <button
+                        [disabled]="!!unavailable[part.id]"
+                        (click)="addToCart.next(part.id)">add
+                    </button>
+                </td>
                 <td>{{part.name}}</td>
             </tr>
         </table>
     `,
     directives: [CORE_DIRECTIVES],
-    changeDetection:ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PartsView {
     @Input() parts = [];
     @Input() unavailable = {};
 
-    @Output() addToCart: EventEmitter = new EventEmitter();
+    @Output() addToCart:EventEmitter = new EventEmitter();
 
 }

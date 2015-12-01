@@ -8,7 +8,11 @@ import {removeFromCart} from "../actions/cart-actions";
     template: `
         <table>
             <tr *ng-for="#part of parts">
-                <td><button (click)="removeFromCart.next(part.id)">remove</button></td>
+                <td>
+                    <button
+                        (click)="removeFromCart.next(part.id)">remove
+                    </button>
+                </td>
                 <td>{{part.name}}</td>
             </tr>
         </table>
