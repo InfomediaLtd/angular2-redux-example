@@ -4,8 +4,8 @@ import {AppStore} from "../stores/app-store";
 
 import {UserActions} from "../actions/user-actions";
 
-import {UsersView} from "../views/users";
-import {UserView} from "../views/user";
+import {UsersView} from "../views/users-view";
+import {UserView} from "../views/user-view";
 
 @Component({
     selector: 'admin',

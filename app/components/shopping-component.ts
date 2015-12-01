@@ -5,8 +5,8 @@ import {AppStore} from "../stores/app-store";
 import {CartActions} from "../actions/cart-actions";
 import {PartActions} from "../actions/part-actions";
 
-import {PartsView} from "../views/parts";
-import {CartView} from "../views/cart";
+import {PartsView} from "../views/parts-view";
+import {CartView} from "../views/cart-view";
 
 @Component({
     selector: 'shopping',
