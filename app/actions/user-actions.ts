@@ -13,26 +13,28 @@ export class UserActions {
     fetchUsers() {
         const BASE_URL:string = "http://jsonplaceholder.typicode.com/users";
         return (dispatch) => {
-            dispatch(requestUsers());
+            dispatch(this.requestUsers());
 
             this._http.get(`${BASE_URL}`)
                 .map(result => result.json())
                 .map(json => {
-                    dispatch(receiveUsers(json));
+                    dispatch(this.receiveUsers(json));
                 }).subscribe();
         };
     }
 
-}
+    requestUsers() {
+        return {type: REQUEST_USERS};
+    }
 
-
-export var requestUsers = () => {
-    return {type: REQUEST_USERS};
-};
-export function receiveUsers(users) {
-    return {
-        type: RECEIVE_USERS,
-        users,
-        updated: Date.now()
+    receiveUsers(users) {
+        return {
+            type: RECEIVE_USERS,
+            users,
+            updated: Date.now()
+        }
     }
 }
+
+
+

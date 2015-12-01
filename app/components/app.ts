@@ -5,8 +5,11 @@ import {PartsView} from "../views/parts";
 import {CartView} from "../views/cart";
 import {UsersView} from "../views/users";
 
-import * as CartActions from "../actions/cart-actions";
+import {CartActions} from "../actions/cart-actions";
 import {UserActions} from "../actions/user-actions";
+import {PartActions} from "../actions/part-actions";
+
+import { bindActionCreators } from "redux";
 
 @Component({
     selector: 'my-app',
@@ -37,7 +40,11 @@ export class AppView {
     private partsInCart = [];
     private users = [];
 
-    constructor(private _appStore:AppStore, userActions:UserActions) {
+    constructor(
+        private _appStore:AppStore,
+        private _partActions:PartActions,
+        private _cartActions:CartActions,
+        private _userActions:UserActions) {
 
         _appStore.subscribe(() => {
 
@@ -63,17 +70,24 @@ export class AppView {
             // users
             this.users = _appStore.getState().users;
 
+
         });
 
-        _appStore.dispatch(userActions.fetchUsers());
+        _appStore.dispatch(_userActions.fetchUsers());
+
+        // add initial parts
+        _appStore.dispatch(this._partActions.addPart("Bumper"));
+        _appStore.dispatch(this._partActions.addPart("MP3 Player"));
+        _appStore.dispatch(this._partActions.addPart("Mirror"));
+        _appStore.dispatch(this._partActions.addPart("Hood"));
 
     }
 
     addPartToCart(id) {
-        this._appStore.dispatch(CartActions.addToCart(id));
+        this._appStore.dispatch(this._cartActions.addToCart(id));
     }
     removePartFromCart(id) {
-        this._appStore.dispatch(CartActions.removeFromCart(id))
+        this._appStore.dispatch(this._cartActions.removeFromCart(id))
     }
 
 }

@@ -14,9 +14,9 @@ import {AppStore} from "./stores/app-store";
 import parts from "./reducers/parts-reducer"
 import cart from "./reducers/cart-reducer"
 import users from "./reducers/users-reducer"
-import {addPart} from "./actions/part-actions"
 
-import {fetchUsers} from "./actions/user-actions"
+import {PartActions} from "./actions/part-actions";
+import {CartActions} from "./actions/cart-actions";
 import {UserActions} from "./actions/user-actions";
 
 // example middleware
@@ -34,18 +34,5 @@ bootstrap(AppView,
     [
         provide(AppStore, {useValue: appStore}),
         HTTP_PROVIDERS,
-        UserActions
+        CartActions, PartActions, UserActions
     ]);
-
-const addPartAction = bindActionCreators(addPart, appStore.dispatch);
-addPartAction("Bumper");
-addPartAction("MP3 Player");
-addPartAction("Mirror");
-addPartAction("Hood");
-
-
-//appStore.dispatch(fetchUsers());
-/*
-appStore.dispatch(fetchUsers()).then(() =>
-    console.log(appStore.getState().users)
-);*/
