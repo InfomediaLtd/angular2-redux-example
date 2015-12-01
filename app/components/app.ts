@@ -1,13 +1,14 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
 
 import {AppStore} from "../stores/app-store";
-import {PartsView} from "../views/parts";
-import {CartView} from "../views/cart";
-import {UsersView} from "../views/users";
 
 import {CartActions} from "../actions/cart-actions";
 import {UserActions} from "../actions/user-actions";
 import {PartActions} from "../actions/part-actions";
+
+import {PartsView} from "../views/parts";
+import {CartView} from "../views/cart";
+import {UsersView} from "../views/users";
 
 @Component({
     selector: 'my-app',
