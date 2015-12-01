@@ -63,7 +63,7 @@ export class AppView {
 
             this.parts = state.parts;
             if (this.cart !== state.cart) {
-                this.onCartChange(_appStore);
+                this.setCartProperties(_appStore);
             }
             this.users = state.users;
             this.currentUser = state.users.current;
@@ -83,7 +83,7 @@ export class AppView {
         _appStore.dispatch(this._partActions.addPart("Hood"));
     };
 
-    private onCartChange(_appStore) {
+    private setCartProperties(_appStore) {
         var partsById = _appStore.getState().parts.reduce((map, part) => {
             map[part.id] = part;
             return map;
@@ -96,6 +96,7 @@ export class AppView {
         this.partsInCart = computed.partsInCart;
         this.partIdsInCart = computed.partIdsInCart;
 
+        this.cart = _appStore.getState().cart;
     };
 
     addPartToCart(id) {
