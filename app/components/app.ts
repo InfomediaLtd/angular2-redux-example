@@ -9,8 +9,6 @@ import {CartActions} from "../actions/cart-actions";
 import {UserActions} from "../actions/user-actions";
 import {PartActions} from "../actions/part-actions";
 
-import { bindActionCreators } from "redux";
-
 @Component({
     selector: 'my-app',
     template: `
