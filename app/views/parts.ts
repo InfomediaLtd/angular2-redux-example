@@ -1,14 +1,12 @@
 import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/angular2'
 
-import {AppStore} from "../stores/app-store";
-
 @Component({
     selector: 'parts',
     template: `
         <table>
             <tr *ng-for="#part of parts">
                 <td>
-                    <button style="margin-right:10px"
+                    <button style="margin-right:10px;margin-bottom:3px;margin-top:3px"
                         [disabled]="!!unavailable[part.id]"
                         (click)="addToCart.next(part.id)">add
                     </button>
