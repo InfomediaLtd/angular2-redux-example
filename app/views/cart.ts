@@ -9,7 +9,7 @@ import {removeFromCart} from "../actions/cart-actions";
         <table>
             <tr *ng-for="#part of parts">
                 <td>
-                    <button
+                    <button style="margin-right:10px"
                         (click)="removeFromCart.next(part.id)">remove
                     </button>
                 </td>

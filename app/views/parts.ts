@@ -8,7 +8,7 @@ import {AppStore} from "../stores/app-store";
         <table>
             <tr *ng-for="#part of parts">
                 <td>
-                    <button
+                    <button style="margin-right:10px"
                         [disabled]="!!unavailable[part.id]"
                         (click)="addToCart.next(part.id)">add
                     </button>

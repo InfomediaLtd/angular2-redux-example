@@ -12,6 +12,10 @@ export default (state = [], action:any = {}) => {
                 list: action.users,
                 updated: action.updated
             });
+        case UserActions.CURRENT_USER:
+            return Object.assign({}, state, {
+                current: action.current
+            });
         default:
             return state;
     }

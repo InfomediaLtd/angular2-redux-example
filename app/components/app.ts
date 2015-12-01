@@ -9,6 +9,7 @@ import {PartActions} from "../actions/part-actions";
 import {PartsView} from "../views/parts";
 import {CartView} from "../views/cart";
 import {UsersView} from "../views/users";
+import {UserView} from "../views/user";
 
 @Component({
     selector: 'my-app',
@@ -27,9 +28,16 @@ import {UsersView} from "../views/users";
         </cart>
         <hr/>
         <h3>Users</h3>
-        <users [users]="users"></users>
+        <users
+            [users]="users"
+            (current)="setCurrentUser($event)">
+        </users>
+        <hr/>
+        <h3>Current User</h3>
+        <user [data]="currentUser">
+        </user>
     `,
-    directives: [CORE_DIRECTIVES, PartsView, CartView, UsersView]
+    directives: [CORE_DIRECTIVES, PartsView, CartView, UsersView, UserView]
 })
 export class AppView {
 
@@ -38,6 +46,7 @@ export class AppView {
     private cart = [];
     private partsInCart = [];
     private users = [];
+    private currentUser = null;
 
     constructor(
         private _appStore:AppStore,
@@ -53,7 +62,7 @@ export class AppView {
                 this.onCartChange(_appStore);
             }
             this.users = state.users;
-
+            this.currentUser = state.users.current;
 
         });
 
@@ -90,6 +99,9 @@ export class AppView {
     }
     removePartFromCart(id) {
         this._appStore.dispatch(this._cartActions.removeFromCart(id))
+    }
+    setCurrentUser(id) {
+        this._appStore.dispatch(this._userActions.setCurrentUser(id))
     }
 
 }

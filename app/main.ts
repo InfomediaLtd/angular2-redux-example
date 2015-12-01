@@ -1,6 +1,8 @@
 import 'zone.js';
 import 'reflect-metadata';
 
+import "bootstrap/css/bootstrap.css!"
+
 import { provide, bootstrap, injector } from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
