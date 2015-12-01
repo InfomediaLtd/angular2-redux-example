@@ -47,8 +47,8 @@ import {UserView} from "../views/user";
 export class AppView {
 
     private parts = [];
-    private partIdsInCart = [];
     private cart = [];
+    private partIdsInCart = {};
     private partsInCart = [];
     private users = [];
     private currentUser = null;
