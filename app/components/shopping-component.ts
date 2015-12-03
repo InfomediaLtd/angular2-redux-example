@@ -48,15 +48,15 @@ export class ShoppingComponent {
             }
         });
 
-        this.createInitialSetOfParts(_appStore);
+        ShoppingComponent.createInitialSetOfParts(_appStore, _partActions);
 
     }
 
-    private createInitialSetOfParts(_appStore) {
-        _appStore.dispatch(this._partActions.addPart("Bumper"));
-        _appStore.dispatch(this._partActions.addPart("MP3 Player"));
-        _appStore.dispatch(this._partActions.addPart("Mirror"));
-        _appStore.dispatch(this._partActions.addPart("Hood"));
+    private static createInitialSetOfParts(appStore, partActions) {
+        appStore.dispatch(partActions.addPart("Bumper"));
+        appStore.dispatch(partActions.addPart("MP3 Player"));
+        appStore.dispatch(partActions.addPart("Mirror"));
+        appStore.dispatch(partActions.addPart("Hood"));
     };
 
     private updatePartsInCart(_appStore) {
@@ -73,15 +73,15 @@ export class ShoppingComponent {
         this.partIdsInCart = computed.partIdsInCart;
     };
 
-    addPart(name) {
+    private addPart(name) {
         this._appStore.dispatch(this._partActions.addPart(name));
     }
 
-    addPartToCart(id) {
+    private addPartToCart(id) {
         this._appStore.dispatch(this._cartActions.addToCart(id));
     }
 
-    removePartFromCart(id) {
+    private removePartFromCart(id) {
         this._appStore.dispatch(this._cartActions.removeFromCart(id))
     }
 
