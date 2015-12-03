@@ -13,10 +13,11 @@ import {UserView} from "../views/user-view";
         <h3>Users</h3>
         <users
             [users]="users"
-            (current)="setCurrentUser($event)">
+            (current)="setCurrentUser123($event)">
         </users>
         <hr/>
         <h3>Current User</h3>
+        <br/>
         <user [data]="currentUser"></user>
     `,
     directives: [CORE_DIRECTIVES, UsersView, UserView]
@@ -42,7 +43,7 @@ export class AdminComponent {
 
     }
 
-    setCurrentUser(id) {
+    setCurrentUser123(id) {
         this._appStore.dispatch(this._userActions.setCurrentUser(id))
     }
 

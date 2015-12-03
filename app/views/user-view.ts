@@ -3,10 +3,20 @@ import {Component, CORE_DIRECTIVES, Input, ChangeDetectionStrategy} from 'angula
 @Component({
     selector: 'user',
     template: `
-        <div *ng-if="data">
-            <span>name:</span><label>{{data.name}}</label>
-            <span>email:</span><label>{{data.email}}</label>
-        </div>
+        <form *ng-if="data" class="form">
+            <div class="form-group">
+                <span>Name:</span><label>{{data.name}}</label>
+            </div>
+            <div class="form-group">
+                <span>Hair:</span><label>{{data.hair_color}}</label>
+            </div>
+            <div class="form-group">
+                <span>Gender:</span><label>{{data.gender}}</label>
+            </div>
+            <div class="form-group">
+                <span>Eyes:</span><label>{{data.eye_color}}</label>
+            </div>
+        </form>
     `,
     directives: [CORE_DIRECTIVES],
     changeDetection:ChangeDetectionStrategy.OnPush

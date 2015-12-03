@@ -12,15 +12,15 @@ export class UserActions {
     }
 
     fetchUsers() {
-        const BASE_URL:string = "http://jsonplaceholder.typicode.com/users";
+        const BASE_URL:string = "http://swapi.co/api/people/";
         return (dispatch) => {
             dispatch(this.requestUsers());
 
             this._http.get(`${BASE_URL}`)
                 .map(result => result.json())
-                .map(json => {
-                    dispatch(this.receiveUsers(json));
-                }).subscribe();
+                .map(json => json.results)
+                .map(result =>  dispatch(this.receiveUsers(result)))
+                .subscribe();
         };
     }
 
