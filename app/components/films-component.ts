@@ -10,7 +10,7 @@ import {FilmView} from "../views/film-view";
     template: `
         <h3>Films</h3>
         <film-selection [count]="filmsCount" (current)="setCurrentFilm($event)"></film-selection>
-        <div [ng-class]="{'text-muted':isFetchingCurrentFilm,'text-primary':!isFetchingCurrentFilm}" style="margin-left:10px;margin-top:20px;">
+        <div [ng-class]="{'text-muted':isFetchingCurrentFilm,'text-primary':!isFetchingCurrentFilm}" style="margin-top:20px;">
             <film [data]="currentFilm" [loading]="isFetchingCurrentFilm"></film>
         </div>
 

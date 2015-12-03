@@ -14,7 +14,7 @@ import {Component, CORE_DIRECTIVES, Input, Output, ChangeDetectionStrategy, Even
     `,
     styles: [`
         .vehicle-selection {
-            margin-left:8px;
+            margin-right:8px;
         }
     `],
     directives: [CORE_DIRECTIVES],
