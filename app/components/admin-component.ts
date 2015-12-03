@@ -13,7 +13,7 @@ import {UserView} from "../views/user-view";
         <h3>Users</h3>
         <users
             [users]="users"
-            (current)="setCurrentUser123($event)">
+            (current)="setCurrentUser($event)">
         </users>
         <hr/>
         <h3>Current User</h3>
@@ -43,7 +43,7 @@ export class AdminComponent {
 
     }
 
-    setCurrentUser123(id) {
+    setCurrentUser(id) {
         this._appStore.dispatch(this._userActions.setCurrentUser(id))
     }
 
