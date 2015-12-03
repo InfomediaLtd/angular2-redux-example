@@ -7,11 +7,13 @@ import {PartActions} from "../actions/part-actions";
 
 import {PartsView} from "../views/parts-view";
 import {CartView} from "../views/cart-view";
+import {AddPartsView} from "../views/add-part-view";
 
 @Component({
     selector: 'shopping',
     template: `
         <h3>Parts</h3>
+        <add-part></add-part>
         <parts
             [parts]="parts"
             [unavailable]="partIdsInCart"
@@ -24,7 +26,7 @@ import {CartView} from "../views/cart-view";
             (remove-from-cart)="removePartFromCart($event)">
         </cart>
     `,
-    directives: [CORE_DIRECTIVES, PartsView, CartView]
+    directives: [CORE_DIRECTIVES, PartsView, CartView, AddPartsView]
 })
 export class ShoppingComponent {
 
