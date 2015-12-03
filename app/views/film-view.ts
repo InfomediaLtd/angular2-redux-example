@@ -9,11 +9,7 @@ import {Component, CORE_DIRECTIVES, Input, Output, ChangeDetectionStrategy, Even
     styles: [`
         .blink {
             margin-left:10px;
-            -webkit-animation: blink .75s linear infinite;
-            -moz-animation: blink .75s linear infinite;
-            -ms-animation: blink .75s linear infinite;
-            -o-animation: blink .75s linear infinite;
-             animation: blink .75s linear infinite;
+            animation: blink .75s linear infinite;
         }
         @keyframes blink {
             0% { opacity: 1; }
