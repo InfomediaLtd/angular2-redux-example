@@ -7,6 +7,6 @@ Install with jspm:
 jspm install
 ```
 
-![](https://raw.githubusercontent.com/InfomediaLtd/angular2-redux-example/master/Angular2WithRedux.png)
+![](https://raw.githubusercontent.com/InfomediaLtd/angular2-redux-example/master/images/Angular2WithRedux.png)
 
 
