@@ -23,7 +23,7 @@ export class FilmActions {
             this._http.get(`${this.BASE_URL}`)
                 .map(result => result.json())
                 .map(json =>  {
-                    dispatch(this.receiveFilms(json.result));
+                    dispatch(this.receiveFilms(json.results));
                     dispatch(this.receiveNumberOfFilms(json.count));
                 })
                 .subscribe();

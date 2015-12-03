@@ -4,6 +4,7 @@ import {Injectable} from "angular2/core";
 export const REQUEST_USERS:string = 'REQUEST_USERS';
 export const RECEIVE_USERS:string = 'RECEIVE_USERS';
 export const CURRENT_USER:string = 'CURRENT_USER';
+export const SET_FILM_FILTER:string = 'SET_FILM_FILTER';
 
 @Injectable()
 export class UserActions {
@@ -40,6 +41,13 @@ export class UserActions {
         return {
             type: CURRENT_USER,
             current
+        }
+    }
+
+    setFilmFilter(filmFilter) {
+        return {
+            type: SET_FILM_FILTER,
+            filmFilter: filmFilter
         }
     }
 }

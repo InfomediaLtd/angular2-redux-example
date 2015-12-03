@@ -16,6 +16,10 @@ export default (state = [], action:any = {}) => {
             return Object.assign({}, state, {
                 current: action.current
             });
+        case UserActions.SET_FILM_FILTER:
+            return Object.assign({}, state, {
+                filmFilter: action.filmFilter
+            });
         default:
             return state;
     }

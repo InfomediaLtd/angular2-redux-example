@@ -5,7 +5,7 @@ import {SimpleList} from 'InfomediaLtd/angular2-simple-list/app/components/simpl
     selector: 'users',
     template: `
         <simple-list
-            [list]="users.list"
+            [list]="data"
             [content]="getContent"
             (current)="current.next($event)">
     `,
@@ -13,7 +13,7 @@ import {SimpleList} from 'InfomediaLtd/angular2-simple-list/app/components/simpl
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UsersView {
-    @Input() users = {};
+    @Input() data = {};
     @Output() current:EventEmitter = new EventEmitter();
 
     getContent(user:any):string { return user.name; }

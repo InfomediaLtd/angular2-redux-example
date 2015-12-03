@@ -9,7 +9,7 @@ export default (state = [], action:any = {}) => {
         case FilmActions.RECEIVE_FILMS:
             return Object.assign({}, state, {
                 isFetchingFilms: false,
-                list: action.users
+                list: action.films
             });
         case FilmActions.REQUEST_FILM:
             return Object.assign({}, state, {
