@@ -1,19 +1,18 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
 
 import {AppStore} from "../stores/app-store";
-
 import {CartActions} from "../actions/cart-actions";
 import {PartActions} from "../actions/part-actions";
 
-import {PartsView} from "../views/parts-view";
-import {CartView} from "../views/cart-view";
-import {AddPartsView} from "../views/add-part-view";
+import {PartsView} from "../views/catalog/parts-view";
+import {CartView} from "../views/catalog/cart-view";
+import {AddPartsView} from "../views/catalog/add-part-view";
 
 @Component({
     selector: 'shopping',
     template: `
         <h3>Parts</h3>
-        <add-part></add-part>
+        <add-part (add)="addPart($event)"></add-part>
         <parts
             [parts]="parts"
             [unavailable]="partIdsInCart"
@@ -73,6 +72,10 @@ export class ShoppingComponent {
         this.partsInCart = computed.partsInCart;
         this.partIdsInCart = computed.partIdsInCart;
     };
+
+    addPart(name) {
+        this._appStore.dispatch(this._partActions.addPart(name));
+    }
 
     addPartToCart(id) {
         this._appStore.dispatch(this._cartActions.addToCart(id));

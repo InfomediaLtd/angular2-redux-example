@@ -1,9 +1,10 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
 
 import {AppStore} from "../stores/app-store";
-import {FilmSelectionView} from "../views/film-selection-view";
 import {FilmActions} from "../actions/film-actions";
-import {FilmView} from "../views/film-view";
+
+import {FilmSelectionView} from "../views/film/film-selection-view";
+import {FilmView} from "../views/film/film-view";
 
 @Component({
     selector: 'films-component',

@@ -1,11 +1,10 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
 
 import {AppStore} from "../stores/app-store";
-
 import {UserActions} from "../actions/user-actions";
 
-import {UsersView} from "../views/users-view";
-import {UserView} from "../views/user-view";
+import {UsersView} from "../views/admin/users-view";
+import {UserView} from "../views/admin/user-view";
 
 @Component({
     selector: 'admin',
