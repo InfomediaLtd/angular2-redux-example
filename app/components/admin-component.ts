@@ -6,7 +6,7 @@ import {UserActions} from "../actions/user-actions";
 import {UsersView} from "../views/admin/users-view";
 import {UserView} from "../views/admin/user-view";
 
-import {createSelector} from 'rackt/reselect/src/index.js';
+import {createSelector} from 'rackt/reselect';
 
 @Component({
     selector: 'admin',
