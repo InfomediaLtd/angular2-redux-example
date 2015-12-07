@@ -3,9 +3,9 @@ import {Component, CORE_DIRECTIVES, Output, EventEmitter, ChangeDetectionStrateg
 @Component({
     selector: 'add-part',
     template: `
-        <form class="form-inline" (submit)="$event.preventDefault();add.next(name.value);name.value=''">
+        <form class="form-inline" (submit)="onSubmit($event,name.value);name.value=''">
             <div class="form-group">
-                <input #name type="text" class="form-control" id="partNameInput" placeholder="Part Name" autocomplete="off">
+                <input #name type="text" class="form-control" placeholder="Part Name" autocomplete="off">
             </div>
             <button type="submit" class="btn btn-default">Add</button>
         </form>
@@ -17,4 +17,8 @@ export class AddPartsView {
 
     @Output() add:EventEmitter = new EventEmitter();
 
+    private onSubmit($event, value) {
+        $event.preventDefault();
+        this.add.next(value);
+    }
 }
