@@ -8,6 +8,8 @@ import {PartsView} from "../views/catalog/parts-view";
 import {CartView} from "../views/catalog/cart-view";
 import {AddPartsView} from "../views/catalog/add-part-view";
 
+import {createSelector} from 'rackt/reselect/src/index.js';
+
 @Component({
     selector: 'shopping',
     template: `
@@ -15,7 +17,7 @@ import {AddPartsView} from "../views/catalog/add-part-view";
         <add-part (add)="addPart($event)"></add-part>
         <parts
             [parts]="parts"
-            [unavailable]="partIdsInCart"
+            [parts-in-cart]="partsInCart"
             (add-to-cart)="addPartToCart($event)">
         </parts>
         <hr/>
@@ -30,46 +32,27 @@ import {AddPartsView} from "../views/catalog/add-part-view";
 export class ShoppingComponent {
 
     private parts = [];
-    private cart = [];
-    private partIdsInCart = {};
     private partsInCart = [];
 
     constructor(private _appStore:AppStore,
                 private _partActions:PartActions,
                 private _cartActions:CartActions) {
 
+
+        const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts,
+            (cart, parts) => {
+                var partsById = parts.reduce((map, part) => (map[part.id] = part) && map, {});
+                return cart.map(id => partsById[id]);
+            });
+
         _appStore.subscribe((state) => {
             this.parts = state.parts;
-            if (this.cart !== state.cart) {
-                this.cart = _appStore.getState().cart;
-                this.updatePartsInCart(_appStore);
-            }
+            this.partsInCart = partsInCartSelector(state);
         });
 
         ShoppingComponent.createInitialSetOfParts(_appStore, _partActions);
 
     }
-
-    private static createInitialSetOfParts(appStore, partActions) {
-        appStore.dispatch(partActions.addPart("Bumper"));
-        appStore.dispatch(partActions.addPart("MP3 Player"));
-        appStore.dispatch(partActions.addPart("Mirror"));
-        appStore.dispatch(partActions.addPart("Hood"));
-    };
-
-    private updatePartsInCart(_appStore) {
-        var partsById = _appStore.getState().parts.reduce((map, part) => {
-            map[part.id] = part;
-            return map;
-        }, {});
-        var computed = _appStore.getState().cart.reduce(({partsInCart,partIdsInCart}, id) => {
-            partsInCart.push(partsById[id]);
-            partIdsInCart[id] = true;
-            return {partsInCart, partIdsInCart};
-        }, {partsInCart: [], partIdsInCart: {}});
-        this.partsInCart = computed.partsInCart;
-        this.partIdsInCart = computed.partIdsInCart;
-    };
 
     private addPart(name) {
         this._appStore.dispatch(this._partActions.addPart(name));
@@ -82,5 +65,12 @@ export class ShoppingComponent {
     private removePartFromCart(id) {
         this._appStore.dispatch(this._cartActions.removeFromCart(id))
     }
+
+    private static createInitialSetOfParts(appStore, partActions) {
+        appStore.dispatch(partActions.addPart("Bumper"));
+        appStore.dispatch(partActions.addPart("MP3 Player"));
+        appStore.dispatch(partActions.addPart("Mirror"));
+        appStore.dispatch(partActions.addPart("Hood"));
+    };
 
 }

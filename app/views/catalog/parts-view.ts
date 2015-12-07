@@ -1,5 +1,10 @@
 import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/angular2'
 
+import {createSelector} from 'rackt/reselect/src/index.js';
+
+const partsInCartLookupSelector = createSelector(changeRecord => changeRecord.partsInCart.currentValue,
+    partsInCart => partsInCart.reduce((map, part) => (map[part.id] = true) && map, {})
+);
 @Component({
     selector: 'parts',
     template: `
@@ -7,7 +12,7 @@ import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetection
             <tr *ng-for="#part of parts">
                 <td>
                     <button style="margin-right:10px;margin-bottom:3px;margin-top:3px"
-                        [disabled]="!!unavailable[part.id]"
+                        [disabled]="partsInCartLookup[part.id]"
                         (click)="addToCart.next(part.id)">add
                     </button>
                 </td>
@@ -20,8 +25,13 @@ import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetection
 })
 export class PartsView {
     @Input() parts = [];
-    @Input() unavailable = {};
+    @Input() partsInCart = [];
+    partsInCartLookup = {};
 
     @Output() addToCart:EventEmitter = new EventEmitter();
 
+    onChanges(changeRecord) {
+        this.partsInCartLookup = partsInCartLookupSelector(changeRecord);
+    }
 }
+
