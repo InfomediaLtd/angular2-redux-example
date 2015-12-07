@@ -56,14 +56,10 @@ export class AdminComponent {
     }
 
     private static createUsersToShowSelector() {
-        const currentFilmSelector = createSelector(
-            state => state.users.filmFilter,
-            state => state.films.currentFilm,
+        const currentFilmSelector = createSelector(state => state.users.filmFilter, state => state.films.currentFilm,
             (filmFilter, currentFilm) => filmFilter && currentFilm ? currentFilm : null
         );
-        return createSelector(
-            state => state.users.list,
-            currentFilmSelector,
+        return createSelector(state => state.users.list, currentFilmSelector,
             (users, currentFilm) => currentFilm ? users.filter(AdminComponent.getFilter(currentFilm)) : users
         );
     };
@@ -71,10 +67,7 @@ export class AdminComponent {
     private static getFilter(film) {
         const ids = film.characters
             .map(url => AdminComponent.getId(url))
-            .reduce((idsMap, id)=> {
-                idsMap[id] = true;
-                return idsMap;
-            }, {});
+            .reduce((idsMap, id)=> (idsMap[id] = true) && idsMap, {});
         return user => ids[AdminComponent.getId(user.url)];
     };
 
