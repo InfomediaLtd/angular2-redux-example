@@ -1,6 +1,6 @@
 import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/angular2'
 
-import {createSelector} from 'rackt/reselect';
+import {createSelector} from 'rackt/reselect/src/index.js';
 
 const partsInCartLookupSelector = createSelector(changeRecord => changeRecord.partsInCart.currentValue,
     partsInCart => partsInCart.reduce((map, part) => (map[part.id] = true) && map, {})

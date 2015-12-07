@@ -23,7 +23,7 @@ System.config({
     "angular2": "npm:angular2@2.0.0-alpha.45",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "css": "github:systemjs/plugin-css@0.1.20",
-    "rackt/reselect": "github:rackt/reselect@2.0.1/src/index.js",
+    "rackt/reselect": "github:rackt/reselect@2.0.1",
     "redux": "npm:redux@3.0.4",
     "redux-thunk": "npm:redux-thunk@1.0.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",

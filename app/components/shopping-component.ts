@@ -8,7 +8,7 @@ import {PartsView} from "../views/catalog/parts-view";
 import {CartView} from "../views/catalog/cart-view";
 import {AddPartsView} from "../views/catalog/add-part-view";
 
-import {createSelector} from 'rackt/reselect';
+import {createSelector} from 'rackt/reselect/src/index.js';
 
 @Component({
     selector: 'shopping',
