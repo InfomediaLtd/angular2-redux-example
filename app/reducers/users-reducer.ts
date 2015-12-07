@@ -1,6 +1,6 @@
 import * as UserActions from '../actions/user-actions';
 
-export default (state = [], action:any = {}) => {
+export default (state = {}, action:any = {}) => {
     switch (action.type) {
         case UserActions.REQUEST_USERS:
             return Object.assign({}, state, {isFetching: true});
