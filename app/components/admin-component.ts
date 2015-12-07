@@ -13,9 +13,7 @@ import {createSelector} from 'rackt/reselect/src/index.js';
     template: `
         <h3>Users</h3>
         <a href="" (click)="toggleFilter($event)" [class.hidden]="!usersToShow">Turn filter {{filmFilter?"off":"on"}}</a>
-        <users
-            [data]="usersToShow"
-            (current)="setCurrentUser($event)">
+        <users [data]="usersToShow" (current)="setCurrentUser($event)">
         </users>
         <hr/>
         <h3>Current User</h3>
