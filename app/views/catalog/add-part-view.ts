@@ -3,7 +3,7 @@ import {Component, CORE_DIRECTIVES, Output, EventEmitter, ChangeDetectionStrateg
 @Component({
     selector: 'add-part',
     template: `
-        <form class="form-inline" (ng-submit)="add.next(name.value);name.value=''">
+        <form class="form-inline" (submit)="$event.preventDefault();add.next(name.value);name.value=''">
             <div class="form-group">
                 <input #name type="text" class="form-control" id="partNameInput" placeholder="Part Name" autocomplete="off">
             </div>
