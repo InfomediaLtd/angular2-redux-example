@@ -12,7 +12,7 @@ import { createSelector } from 'rackt/reselect/src/index.js';
     selector: 'admin',
     template: `
         <h3>Users</h3>
-        <a href="" (click)="toggleFilter($event)" [class.hidden]="filmFilter">Turn filter on</a>
+        <a href="" (click)="toggleFilter($event)" [class.hidden]="filmFilter || !usersToShow">Turn filter on</a>
         <a href="" (click)="toggleFilter($event)" [class.hidden]="!filmFilter">Turn filter off</a>
         <users
             [data]="usersToShow"
@@ -27,9 +27,9 @@ import { createSelector } from 'rackt/reselect/src/index.js';
 })
 export class AdminComponent {
 
-    private usersToShow = [];
+    private usersToShow = null;
     private currentUser = null;
-    private filmFilter = false;
+    private filmFilter = null;
 
     constructor(private _appStore:AppStore,
                 private _userActions:UserActions) {
