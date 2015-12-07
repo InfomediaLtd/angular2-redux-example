@@ -7,11 +7,11 @@ export const REMOVE_FROM_CART:string = 'REMOVE_FROM_CART';
 export class CartActions {
 
     addToCart(id) {
-        return {type:ADD_TO_CART,id};
+        return {type: ADD_TO_CART, id};
     };
 
     removeFromCart(id) {
-        return {type:REMOVE_FROM_CART,id};
+        return {type: REMOVE_FROM_CART, id};
     };
 
 }

@@ -15,7 +15,8 @@ export class AppStore {
             return store.getState();
         };
         this.subscribe = (subscribeFunction) => {
-            return store.subscribe(subscribeFunction);
+            // decorate the subscription with a state argument
+            return store.subscribe(() => subscribeFunction(this.getState()));
         };
         this.dispatch = (action) => {
             return store.dispatch(action);

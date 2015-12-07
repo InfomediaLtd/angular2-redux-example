@@ -20,7 +20,7 @@ import {FilmView} from "../views/film/film-view";
 })
 export class FilmsComponent {
 
-    private filmsCount=0;
+    private filmsCount;
 
     private currentFilm = null;
     private isFetchingCurrentFilm = false;
@@ -28,11 +28,8 @@ export class FilmsComponent {
     constructor(private _appStore:AppStore,
                 private _filmActions:FilmActions) {
 
-        _appStore.subscribe(() => {
-            var state = _appStore.getState();
-            if (state.films.count && state.films.count!=this.filmsCount) {
-                this.filmsCount = state.films.count;
-            }
+        _appStore.subscribe((state) => {
+            this.filmsCount = state.films.count;
             this.currentFilm = state.films.currentFilm;
             this.isFetchingCurrentFilm = state.films.isFetchingFilm;
 

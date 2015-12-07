@@ -25,12 +25,11 @@ export class FilmSelectionView {
     @Input() count = 0;
     @Output() current:EventEmitter = new EventEmitter();
 
-    currentSelection = null;
-
-    list = [];
+    private currentSelection = null;
+    private list;
 
     onChanges() {
-        this.list = Array.apply(null, Array(this.count)).map((x, index) => index);
+        this.list = (this.count>0?Array.apply(null, Array(this.count)).map((x, index) => index):[]);
     }
 
     private select(item) {

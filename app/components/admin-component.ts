@@ -35,8 +35,7 @@ export class AdminComponent {
 
         const usersToShowSelector = AdminComponent.createUsersToShowSelector();
 
-        _appStore.subscribe(() => {
-            var state = _appStore.getState();
+        _appStore.subscribe((state) => {
             this.usersToShow = usersToShowSelector(state);
             this.currentUser = state.users.current;
             this.filmFilter = state.users.filmFilter;

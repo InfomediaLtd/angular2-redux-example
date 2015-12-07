@@ -22,7 +22,7 @@ export class FilmActions {
 
             this._http.get(`${this.BASE_URL}`)
                 .map(result => result.json())
-                .map(json =>  {
+                .map(json => {
                     dispatch(this.receiveFilms(json.results));
                     dispatch(this.receiveNumberOfFilms(json.count));
                 })
@@ -34,14 +34,15 @@ export class FilmActions {
         return (dispatch) => {
             dispatch(this.requestFilm());
 
-            this._http.get(`${this.BASE_URL}${index+1}/`)
+            this._http.get(`${this.BASE_URL}${index + 1}/`)
                 .map(result => result.json())
-                .map(json =>  {
+                .map(json => {
                     dispatch(this.receiveFilm(json));
                 })
                 .subscribe();
         };
     }
+
     requestFilms() {
         return {type: REQUEST_FILMS};
     }
@@ -52,6 +53,7 @@ export class FilmActions {
             films
         }
     }
+
     receiveNumberOfFilms(count) {
         return {
             type: RECEIVE_NUMBER_OF_FILMS,
@@ -62,6 +64,7 @@ export class FilmActions {
     requestFilm() {
         return {type: REQUEST_FILM};
     }
+
     receiveFilm(film) {
         return {
             type: RECEIVE_FILM,

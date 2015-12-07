@@ -38,9 +38,7 @@ export class ShoppingComponent {
                 private _partActions:PartActions,
                 private _cartActions:CartActions) {
 
-        _appStore.subscribe(() => {
-            var state = _appStore.getState();
-
+        _appStore.subscribe((state) => {
             this.parts = state.parts;
             if (this.cart !== state.cart) {
                 this.cart = _appStore.getState().cart;
