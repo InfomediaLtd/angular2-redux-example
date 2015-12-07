@@ -6,7 +6,7 @@ import {UserActions} from "../actions/user-actions";
 import {UsersView} from "../views/admin/users-view";
 import {UserView} from "../views/admin/user-view";
 
-import { createSelector } from 'rackt/reselect/src/index.js';
+import {createSelector} from 'rackt/reselect/src/index.js';
 
 @Component({
     selector: 'admin',
@@ -68,6 +68,7 @@ export class AdminComponent {
             (users, currentFilm) => currentFilm ? users.filter(AdminComponent.getFilter(currentFilm)) : users
         );
     };
+
     private static getFilter(film) {
         const ids = film.characters
             .map(url => AdminComponent.getId(url))
@@ -77,6 +78,7 @@ export class AdminComponent {
             }, {});
         return user => ids[AdminComponent.getId(user.url)];
     };
+
     private static getId(url) {
         return url.replace(/[a-z\/\.\:]*/g, "");
     };
