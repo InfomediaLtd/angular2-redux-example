@@ -7,8 +7,8 @@ import {Injectable} from "angular2/core";
 export class AppStore {
 
     public getState  :()=>any;
-    public subscribe :(subscribeFunction:(state)=>any)=>()=>any;
-    public dispatch  :(action)=>any;
+    public subscribe :(subscribeFunction:(state)=>void)=>()=>void;
+    public dispatch  :(action)=>void;
 
     constructor(store:any) {
         this.getState = () => {
