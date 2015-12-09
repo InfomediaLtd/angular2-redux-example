@@ -1,13 +1,10 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
-
 import {AppStore} from "../stores/app-store";
 import {CartActions} from "../actions/cart-actions";
 import {PartActions} from "../actions/part-actions";
-
 import {PartsView} from "../views/catalog/parts-view";
 import {CartView} from "../views/catalog/cart-view";
 import {AddPartsView} from "../views/catalog/add-part-view";
-
 import {createSelector} from 'rackt/reselect/src/index.js';
 
 @Component({
@@ -15,17 +12,10 @@ import {createSelector} from 'rackt/reselect/src/index.js';
     template: `
         <h3>Parts</h3>
         <add-part (add)="addPart($event)"></add-part>
-        <parts
-            [parts]="parts"
-            [parts-in-cart]="partsInCart"
-            (add-to-cart)="addPartToCart($event)">
-        </parts>
+        <parts [parts]="parts" [parts-in-cart]="partsInCart" (add-to-cart)="addPartToCart($event)"></parts>
         <hr/>
         <h3>Cart</h3>
-        <cart
-            [parts]="partsInCart"
-            (remove-from-cart)="removePartFromCart($event)">
-        </cart>
+        <cart [parts]="partsInCart" (remove-from-cart)="removePartFromCart($event)"></cart>
     `,
     directives: [CORE_DIRECTIVES, PartsView, CartView, AddPartsView]
 })
@@ -34,10 +24,15 @@ export class ShoppingComponent {
     private parts = [];
     private partsInCart = [];
 
-    constructor(private _appStore:AppStore,
-                private _partActions:PartActions,
-                private _cartActions:CartActions) {
+    private addPart            :(name)=>void;
+    private addPartToCart      :(id)=>void;
+    private removePartFromCart :(id)=>void;
 
+    constructor(appStore:AppStore, partActions:PartActions, cartActions:CartActions) {
+
+        this.addPart            = (name) => appStore.dispatch(partActions.addPart(name));
+        this.addPartToCart      = (id)   => appStore.dispatch(cartActions.addToCart(id));
+        this.removePartFromCart = (id)   => appStore.dispatch(cartActions.removeFromCart(id));
 
         const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts,
             (cart, parts) => {
@@ -45,25 +40,13 @@ export class ShoppingComponent {
                 return cart.map(id => partsById[id]);
             });
 
-        _appStore.subscribe((state) => {
+        appStore.subscribe((state) => {
             this.parts = state.parts;
             this.partsInCart = partsInCartSelector(state);
         });
 
-        ShoppingComponent.createInitialSetOfParts(_appStore, _partActions);
+        ShoppingComponent.createInitialSetOfParts(appStore, partActions);
 
-    }
-
-    private addPart(name) {
-        this._appStore.dispatch(this._partActions.addPart(name));
-    }
-
-    private addPartToCart(id) {
-        this._appStore.dispatch(this._cartActions.addToCart(id));
-    }
-
-    private removePartFromCart(id) {
-        this._appStore.dispatch(this._cartActions.removeFromCart(id))
     }
 
     private static createInitialSetOfParts(appStore, partActions) {

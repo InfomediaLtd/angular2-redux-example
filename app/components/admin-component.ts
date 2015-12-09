@@ -1,18 +1,15 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
-
 import {AppStore} from "../stores/app-store";
 import {UserActions} from "../actions/user-actions";
-
 import {UsersView} from "../views/admin/users-view";
 import {UserView} from "../views/admin/user-view";
-
 import {createSelector} from 'rackt/reselect/src/index.js';
 
 @Component({
     selector: 'admin',
     template: `
         <h3>Users</h3>
-        <a href="" (click)="toggleFilter($event)" [class.hidden]="!usersToShow">Turn filter {{filmFilter?"off":"on"}}</a>
+        <a href="" (click)="$event.preventDefault();toggleFilter($event)" [class.hidden]="!usersToShow">Turn filter {{filmFilter?"off":"on"}}</a>
         <users [data]="usersToShow" (current)="setCurrentUser($event)">
         </users>
         <hr/>
@@ -28,29 +25,25 @@ export class AdminComponent {
     private currentUser = null;
     private filmFilter = null;
 
-    constructor(private _appStore:AppStore,
-                private _userActions:UserActions) {
+    private setCurrentUser :(id)=>void;
+    private toggleFilter   :()=>void;
+
+    constructor(appStore:AppStore, userActions:UserActions) {
+
+        this.setCurrentUser = (id) => appStore.dispatch(userActions.setCurrentUser(id));
+        this.toggleFilter   = ()   => appStore.dispatch(userActions.setFilmFilter(!this.filmFilter));
 
         const usersToShowSelector = AdminComponent.createUsersToShowSelector();
 
-        _appStore.subscribe((state) => {
+        appStore.subscribe((state) => {
             this.usersToShow = usersToShowSelector(state);
             this.currentUser = state.users.current;
             this.filmFilter = state.users.filmFilter;
 
         });
 
-        _appStore.dispatch(_userActions.fetchUsers());
+        appStore.dispatch(userActions.fetchUsers());
 
-    }
-
-    private setCurrentUser(id) {
-        this._appStore.dispatch(this._userActions.setCurrentUser(id))
-    }
-
-    private toggleFilter($event) {
-        $event.preventDefault();
-        this._appStore.dispatch(this._userActions.setFilmFilter(!this.filmFilter));
     }
 
     private static createUsersToShowSelector() {
