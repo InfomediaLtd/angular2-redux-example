@@ -19,9 +19,9 @@ export class AppStore {
      */
     public dispatch         :(action)=>void;
     /**
-     * Create a dispatcher as a curried function using the passed in action creator
+     * Create a dispatcher as a curried function using the passed in action creator and an optional context
      */
-    public createDispatcher :(actionCreator)=>(...n:any[])=>void;
+    public createDispatcher :(actionCreator, context)=>(...n:any[])=>void;
 
     constructor(store:any) {
         this.getState = () => {
@@ -34,8 +34,8 @@ export class AppStore {
         this.dispatch = (action) => {
             return store.dispatch(action);
         };
-        this.createDispatcher = (actionCreator):(...n:any[])=>void => {
-            return (...args) => store.dispatch(actionCreator(...args));
+        this.createDispatcher = (actionCreator, context):(...n:any[])=>void => {
+            return (...args) => store.dispatch(actionCreator.call(context, ...args));
         };
     }
 
