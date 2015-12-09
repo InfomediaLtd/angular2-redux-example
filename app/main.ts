@@ -1,29 +1,22 @@
 import 'zone.js';
 import 'reflect-metadata';
-
 import "bootstrap/css/bootstrap.css!"
-
 import { provide, bootstrap, injector } from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
-
 import {AppView} from "./components/app";
-
 import { createStore, combineReducers, bindActionCreators, applyMiddleware } from "redux";
 import thunkMiddleware from 'redux-thunk'
-
 import {AppStore} from "./stores/app-store";
-
 import parts from "./reducers/parts-reducer"
 import cart from "./reducers/cart-reducer"
 import users from "./reducers/users-reducer"
 import films from "./reducers/films-reducer"
-
 import {PartActions} from "./actions/part-actions";
 import {CartActions} from "./actions/cart-actions";
 import {UserActions} from "./actions/user-actions";
 import {FilmActions} from "./actions/film-actions";
 
-// example middleware
+// Logging middleware (not in use)
 const loggerMiddleware = store => next => action => {
     //console.log('dispatching', action);
     let result = next(action);

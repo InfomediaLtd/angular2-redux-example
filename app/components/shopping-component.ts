@@ -24,15 +24,15 @@ export class ShoppingComponent {
     private parts = [];
     private partsInCart = [];
 
-    private addPart            :(name)=>void;
-    private addPartToCart      :(id)=>void;
-    private removePartFromCart :(id)=>void;
+    private addPart            :()=>void;
+    private addPartToCart      :()=>void;
+    private removePartFromCart :()=>void;
 
     constructor(appStore:AppStore, partActions:PartActions, cartActions:CartActions) {
 
-        this.addPart            = (name) => appStore.dispatch(partActions.addPart(name));
-        this.addPartToCart      = (id)   => appStore.dispatch(cartActions.addToCart(id));
-        this.removePartFromCart = (id)   => appStore.dispatch(cartActions.removeFromCart(id));
+        this.addPart            = appStore.createDispatcher(partActions.addPart);
+        this.addPartToCart      = appStore.createDispatcher(cartActions.addToCart);
+        this.removePartFromCart = appStore.createDispatcher(cartActions.removeFromCart);
 
         const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts,
             (cart, parts) => {

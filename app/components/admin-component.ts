@@ -9,7 +9,7 @@ import {createSelector} from 'rackt/reselect/src/index.js';
     selector: 'admin',
     template: `
         <h3>Users</h3>
-        <a href="" (click)="$event.preventDefault();toggleFilter($event)" [class.hidden]="!usersToShow">Turn filter {{filmFilter?"off":"on"}}</a>
+        <a href="" (click)="$event.preventDefault();setFilmFilter(!filmFilter)" [class.hidden]="!usersToShow">Turn filter {{filmFilter?"off":"on"}}</a>
         <users [data]="usersToShow" (current)="setCurrentUser($event)">
         </users>
         <hr/>
@@ -25,13 +25,13 @@ export class AdminComponent {
     private currentUser = null;
     private filmFilter = null;
 
-    private setCurrentUser :(id)=>void;
-    private toggleFilter   :()=>void;
+    private setCurrentUser;
+    private setFilmFilter;
 
     constructor(appStore:AppStore, userActions:UserActions) {
 
-        this.setCurrentUser = (id) => appStore.dispatch(userActions.setCurrentUser(id));
-        this.toggleFilter   = ()   => appStore.dispatch(userActions.setFilmFilter(!this.filmFilter));
+        this.setCurrentUser = appStore.createDispatcher(userActions.setCurrentUser);
+        this.setFilmFilter  = appStore.createDispatcher(userActions.setFilmFilter);
 
         const usersToShowSelector = AdminComponent.createUsersToShowSelector();
 
