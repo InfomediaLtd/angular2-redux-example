@@ -6,18 +6,22 @@ import {Injectable} from "angular2/core";
 @Injectable()
 export class AppStore {
 
-    constructor(private _store:any) {
+    public getState:()=>any;
+    public subscribe:(subscribeFunction:(state)=>any)=>()=>any;
+    public dispatch:(action)=>any;
+
+    constructor(store:any) {
+        this.getState = () => {
+            return store.getState();
+        };
+        this.subscribe = (subscribeFunction:(state)=>any) => {
+            // decorate the subscription with the state passed in as a parameter
+            return store.subscribe(() => subscribeFunction(this.getState()));
+        };
+        this.dispatch = (action) => {
+            return store.dispatch(action);
+        };
     }
 
-    getState() {
-        return this._store.getState();
-    }
-    subscribe(subscription) {
-        // decorate the subscription with the state passed in as a parameter
-        return this._store.subscribe(() => subscription(this.getState()));
-    }
-    dispatch(action) {
-        return this._store.dispatch(action);
-    }
 
 }
