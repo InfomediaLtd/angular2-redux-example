@@ -7,6 +7,13 @@ import {CartView} from "../views/catalog/cart-view";
 import {AddPartsView} from "../views/catalog/add-part-view";
 import {createSelector} from 'rackt/reselect/src/index.js';
 
+// select the parts in cart
+const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts,
+    (cart, parts) => {
+        const partsById = parts.reduce((map, part) => (map[part.id] = part) && map, {});
+        return cart.map(id => partsById[id]);
+    });
+
 @Component({
     selector: 'shopping',
     template: `
@@ -33,12 +40,6 @@ export class ShoppingComponent {
         this.addPart            = appStore.createDispatcher(partActions.addPart,partActions);
         this.addPartToCart      = appStore.createDispatcher(cartActions.addToCart,cartActions);
         this.removePartFromCart = appStore.createDispatcher(cartActions.removeFromCart,cartActions);
-
-        const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts,
-            (cart, parts) => {
-                const partsById = parts.reduce((map, part) => (map[part.id] = part) && map, {});
-                return cart.map(id => partsById[id]);
-            });
 
         appStore.subscribe((state) => {
             this.parts = state.parts;
