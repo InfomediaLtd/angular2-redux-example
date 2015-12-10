@@ -1,9 +1,10 @@
 import {Injectable} from "angular2/core";
+import {Actions} from "./Actions";
 
 export const ADD_PART:string = 'ADD_PART';
 
 @Injectable()
-export class PartActions {
+export class PartActions extends Actions {
     private id:number = 3;
 
     addPart(name) {

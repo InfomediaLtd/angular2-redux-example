@@ -1,5 +1,6 @@
 import {Http} from "angular2/http";
 import {Injectable} from "angular2/core";
+import {Actions} from "./actions";
 
 export const REQUEST_FILMS:string = 'REQUEST_FILMS';
 export const RECEIVE_FILMS:string = 'RECEIVE_FILMS';
@@ -9,11 +10,12 @@ export const RECEIVE_NUMBER_OF_FILMS:string = 'RECEIVE_NUMBER_OF_FILMS';
 export const CURRENT_FILM:string = 'CURRENT_FILM';
 
 @Injectable()
-export class FilmActions {
+export class FilmActions extends Actions {
 
     BASE_URL:string = "http://swapi.co/api/films/";
 
     constructor(private _http:Http) {
+        super();
     }
 
     fetchFilms() {
