@@ -19,7 +19,7 @@ import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetection
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class CartView {
-    cart = [];
+
     @Input() parts = [];
     @Output() removeFromCart: EventEmitter = new EventEmitter();
 
