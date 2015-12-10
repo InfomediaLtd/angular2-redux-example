@@ -36,7 +36,7 @@ export class ShoppingComponent {
 
         const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts,
             (cart, parts) => {
-                var partsById = parts.reduce((map, part) => (map[part.id] = part) && map, {});
+                const partsById = parts.reduce((map, part) => (map[part.id] = part) && map, {});
                 return cart.map(id => partsById[id]);
             });
 
