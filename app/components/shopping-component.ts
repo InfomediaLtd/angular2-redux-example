@@ -1,11 +1,11 @@
-import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
+import {Component} from 'angular2/core'
 import {AppStore} from "../stores/app-store";
 import {CartActions} from "../actions/cart-actions";
 import {PartActions} from "../actions/part-actions";
 import {PartsView} from "../views/catalog/parts-view";
 import {CartView} from "../views/catalog/cart-view";
 import {AddPartsView} from "../views/catalog/add-part-view";
-import {createSelector} from 'rackt/reselect/src/index.js';
+import {createSelector} from 'rackt/reselect';
 
 // select the parts in cart
 const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts,
@@ -19,21 +19,21 @@ const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts
     template: `
         <h3>Parts</h3>
         <add-part (add)="addPart($event)"></add-part>
-        <parts [parts]="parts" [parts-in-cart]="partsInCart" (add-to-cart)="addPartToCart($event)"></parts>
+        <parts [parts]="parts" [partsInCart]="partsInCart" (addToCart)="addPartToCart($event)"></parts>
         <hr/>
         <h3>Cart</h3>
-        <cart [parts]="partsInCart" (remove-from-cart)="removePartFromCart($event)"></cart>
+        <cart [parts]="partsInCart" (removeFromCart)="removePartFromCart($event)"></cart>
     `,
-    directives: [CORE_DIRECTIVES, PartsView, CartView, AddPartsView]
+    directives: [PartsView, CartView, AddPartsView]
 })
 export class ShoppingComponent {
 
     private parts = [];
     private partsInCart = [];
 
-    private addPart            :()=>void;
-    private addPartToCart      :()=>void;
-    private removePartFromCart :()=>void;
+    private addPart;
+    private addPartToCart;
+    private removePartFromCart;
 
     constructor(appStore:AppStore, partActions:PartActions, cartActions:CartActions) {
 

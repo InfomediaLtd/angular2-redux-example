@@ -1,23 +1,22 @@
-import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
+import {Component} from 'angular2/core'
 import {AppStore} from "../stores/app-store";
 import {UserActions} from "../actions/user-actions";
 import {UsersView} from "../views/admin/users-view";
 import {UserView} from "../views/admin/user-view";
-import {createSelector} from 'rackt/reselect/src/index.js';
+import {createSelector} from 'rackt/reselect';
 
 @Component({
     selector: 'admin',
     template: `
         <h3>Users</h3>
         <a href="" (click)="$event.preventDefault();setFilmFilter(!filmFilter)" [class.hidden]="!usersToShow">Turn filter {{filmFilter?"off":"on"}}</a>
-        <users [data]="usersToShow" (current)="setCurrentUser($event)">
-        </users>
+        <users [data]="usersToShow" (current)="setCurrentUser($event)"></users>
         <hr/>
         <h3>Current User</h3>
         <br/>
         <user [data]="currentUser"></user>
     `,
-    directives: [CORE_DIRECTIVES, UsersView, UserView]
+    directives: [UsersView, UserView]
 })
 export class AdminComponent {
 

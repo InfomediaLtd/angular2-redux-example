@@ -1,4 +1,4 @@
-import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
+import {Component} from 'angular2/core'
 
 import {AppStore} from "../stores/app-store";
 
@@ -20,7 +20,7 @@ import {FilmsComponent} from "./films-component";
             </div>
         </div>
     `,
-    directives: [CORE_DIRECTIVES, ShoppingComponent, AdminComponent, FilmsComponent]
+    directives: [ShoppingComponent, AdminComponent, FilmsComponent]
 })
 export class AppView {
 

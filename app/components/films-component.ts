@@ -1,4 +1,4 @@
-import {Component, CORE_DIRECTIVES} from 'angular2/angular2'
+import {Component} from 'angular2/core'
 
 import {AppStore} from "../stores/app-store";
 import {FilmActions} from "../actions/film-actions";
@@ -11,12 +11,12 @@ import {FilmView} from "../views/film/film-view";
     template: `
         <h3>Films</h3>
         <film-selection [count]="filmsCount" (current)="setCurrentFilm($event)"></film-selection>
-        <div [ng-class]="{'text-muted':isFetchingCurrentFilm,'text-primary':!isFetchingCurrentFilm}" style="margin-top:20px;">
+        <div [ngClass]="{'text-muted':isFetchingCurrentFilm,'text-primary':!isFetchingCurrentFilm}" style="margin-top:20px;">
             <film [data]="currentFilm" [loading]="isFetchingCurrentFilm"></film>
         </div>
 
     `,
-    directives: [CORE_DIRECTIVES, FilmSelectionView, FilmView]
+    directives: [FilmSelectionView, FilmView]
 })
 export class FilmsComponent {
 

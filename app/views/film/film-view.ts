@@ -1,9 +1,9 @@
-import {Component, CORE_DIRECTIVES, Input, Output, ChangeDetectionStrategy, EventEmitter} from 'angular2/angular2'
+import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter} from 'angular2/core'
 
 @Component({
     selector: 'film',
     template: `
-        <label>{{data?.title}}</label><span *ng-if="loading" class="blink">loading...</span>
+        <label>{{data?.title}}</label><span *ngIf="loading" class="blink">loading...</span>
         <p>{{data?.opening_crawl}}</p>
     `,
     styles: [`
@@ -17,7 +17,7 @@ import {Component, CORE_DIRECTIVES, Input, Output, ChangeDetectionStrategy, Even
             50.01% { opacity: 0; }
             100% { opacity: 0; }
         }
-    `],    directives: [CORE_DIRECTIVES],
+    `],
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class FilmView {

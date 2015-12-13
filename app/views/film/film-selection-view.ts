@@ -1,12 +1,12 @@
-import {Component, CORE_DIRECTIVES, Input, Output, ChangeDetectionStrategy, EventEmitter} from 'angular2/angular2'
+import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter, OnChanges} from 'angular2/core'
 
 @Component({
     selector: 'film-selection',
     template: `
         <button type="button"
-            *ng-for="#item of list"
+            *ngFor="#item of list"
             class="vehicle-selection"
-            [ng-class]="{'btn-primary':item==currentSelection}"
+            [ngClass]="{'btn-primary':item==currentSelection}"
             (click)="select(item)"
             >
             {{item+1}}
@@ -17,10 +17,9 @@ import {Component, CORE_DIRECTIVES, Input, Output, ChangeDetectionStrategy, Even
             margin-right:8px;
         }
     `],
-    directives: [CORE_DIRECTIVES],
     changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class FilmSelectionView {
+export class FilmSelectionView implements OnChanges {
 
     @Input() count = 0;
     @Output() current:EventEmitter = new EventEmitter();
@@ -28,7 +27,7 @@ export class FilmSelectionView {
     private currentSelection = null;
     private list;
 
-    onChanges() {
+    ngOnChanges() {
         this.list = (this.count>0?Array.apply(null, Array(this.count)).map((x, index) => index):[]);
     }
 

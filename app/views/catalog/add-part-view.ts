@@ -1,4 +1,4 @@
-import {Component, CORE_DIRECTIVES, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/angular2'
+import {Component, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/core'
 
 @Component({
     selector: 'add-part',
@@ -10,7 +10,6 @@ import {Component, CORE_DIRECTIVES, Output, EventEmitter, ChangeDetectionStrateg
             <button type="submit" class="btn btn-default">Add</button>
         </form>
     `,
-    directives: [CORE_DIRECTIVES],
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class AddPartsView {

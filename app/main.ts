@@ -1,10 +1,11 @@
 import 'zone.js';
 import 'reflect-metadata';
 import "bootstrap/css/bootstrap.css!"
-import { provide, bootstrap, injector } from 'angular2/core';
+import {bootstrap} from 'angular2/platform/browser';
+import {provide, injector} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {AppView} from "./components/app";
-import { createStore, combineReducers, bindActionCreators, applyMiddleware } from "redux";
+import {createStore, combineReducers, bindActionCreators, applyMiddleware} from "redux";
 import thunkMiddleware from 'redux-thunk'
 import {AppStore} from "./stores/app-store";
 import parts from "./reducers/parts-reducer"

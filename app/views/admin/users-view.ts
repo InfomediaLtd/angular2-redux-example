@@ -1,4 +1,4 @@
-import {Component, CORE_DIRECTIVES, Input, Output, ChangeDetectionStrategy, EventEmitter} from 'angular2/angular2'
+import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter} from 'angular2/core'
 import {SimpleList} from 'InfomediaLtd/angular2-simple-list/app/components/simple-list.ts!';
 
 @Component({
@@ -9,7 +9,7 @@ import {SimpleList} from 'InfomediaLtd/angular2-simple-list/app/components/simpl
             [content]="getContent"
             (current)="current.next($event)">
     `,
-    directives: [CORE_DIRECTIVES, SimpleList],
+    directives: [SimpleList],
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UsersView {

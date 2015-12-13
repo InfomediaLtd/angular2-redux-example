@@ -1,6 +1,6 @@
-import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/angular2'
+import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges} from 'angular2/core'
 
-import {createSelector} from 'rackt/reselect/src/index.js';
+import {createSelector} from 'rackt/reselect';
 
 const partsInCartLookupSelector = createSelector(changeRecord => changeRecord.partsInCart.currentValue,
     partsInCart => partsInCart.reduce((map, part) => (map[part.id] = true) && map, {})
@@ -9,7 +9,7 @@ const partsInCartLookupSelector = createSelector(changeRecord => changeRecord.pa
     selector: 'parts',
     template: `
         <table>
-            <tr *ng-for="#part of parts">
+            <tr *ngFor="#part of parts">
                 <td>
                     <button style="margin-right:10px;margin-bottom:3px;margin-top:3px"
                         [disabled]="partsInCartLookup[part.id]"
@@ -20,17 +20,16 @@ const partsInCartLookupSelector = createSelector(changeRecord => changeRecord.pa
             </tr>
         </table>
     `,
-    directives: [CORE_DIRECTIVES],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PartsView {
+export class PartsView implements OnChanges {
     @Input() parts = [];
     @Input() partsInCart = [];
     partsInCartLookup = {};
 
     @Output() addToCart:EventEmitter = new EventEmitter();
 
-    onChanges(changeRecord) {
+    ngOnChanges(changeRecord) {
         this.partsInCartLookup = partsInCartLookupSelector(changeRecord);
     }
 }

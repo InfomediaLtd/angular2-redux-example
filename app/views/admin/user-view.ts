@@ -1,9 +1,9 @@
-import {Component, CORE_DIRECTIVES, Input, ChangeDetectionStrategy} from 'angular2/angular2'
+import {Component, Input, ChangeDetectionStrategy} from 'angular2/core'
 
 @Component({
     selector: 'user',
     template: `
-        <form *ng-if="data" class="form">
+        <form *ngIf="data" class="form">
             <div class="form-group">
                 <span>Name:</span><label>{{data.name}}</label>
             </div>
@@ -18,7 +18,6 @@ import {Component, CORE_DIRECTIVES, Input, ChangeDetectionStrategy} from 'angula
             </div>
         </form>
     `,
-    directives: [CORE_DIRECTIVES],
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UserView {
