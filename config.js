@@ -24,6 +24,7 @@ System.config({
   map: {
     "InfomediaLtd/angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
     "angular2": "npm:angular2@2.0.0-alpha.53",
+    "angular2-redux": "npm:angular2-redux@1.0.4",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "rackt/reselect": "github:rackt/reselect@2.0.1",
@@ -33,14 +34,14 @@ System.config({
     "rxjs": "npm:rxjs@5.0.0-alpha.14",
     "ts": "github:frankwallis/plugin-typescript@2.4.3",
     "typescript": "npm:typescript@1.7.3",
-    "zone.js": "npm:zone.js@0.5.10",
+    "zone.js": "npm:zone.js@0.5.8",
     "github:InfomediaLtd/angular2-simple-list@master": {
       "angular2": "npm:angular2@2.0.0-alpha.53",
       "bootstrap": "github:twbs/bootstrap@3.3.6",
       "css": "github:systemjs/plugin-css@0.1.20",
       "reflect-metadata": "npm:reflect-metadata@0.1.2",
       "ts": "github:frankwallis/plugin-typescript@2.4.3",
-      "zone.js": "npm:zone.js@0.5.10"
+      "zone.js": "npm:zone.js@0.5.8"
     },
     "github:frankwallis/plugin-typescript@2.4.3": {
       "typescript": "npm:typescript@1.7.3"
@@ -80,6 +81,10 @@ System.config({
     },
     "github:twbs/bootstrap@3.3.6": {
       "jquery": "github:components/jquery@2.1.4"
+    },
+    "npm:angular2-redux@1.0.4": {
+      "angular2": "npm:angular2@2.0.0-alpha.53",
+      "redux": "npm:redux@3.0.5"
     },
     "npm:angular2@2.0.0-alpha.53": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
@@ -327,10 +332,6 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
-    },
-    "npm:zone.js@0.5.10": {
-      "es6-promise": "npm:es6-promise@3.0.2",
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:zone.js@0.5.8": {
       "es6-promise": "npm:es6-promise@3.0.2",

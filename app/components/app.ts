@@ -1,7 +1,5 @@
 import {Component} from 'angular2/core'
-
-import {AppStore} from "../stores/app-store";
-
+import {AppStore} from "angular2-redux";
 import {AdminComponent} from "./admin-component";
 import {ShoppingComponent} from "./shopping-component";
 import {FilmsComponent} from "./films-component";

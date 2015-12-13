@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core'
-import {AppStore} from "../stores/app-store";
+import {AppStore} from "angular2-redux";
 import {CartActions} from "../actions/cart-actions";
 import {PartActions} from "../actions/part-actions";
 import {PartsView} from "../views/catalog/parts-view";

@@ -7,7 +7,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import {AppView} from "./components/app";
 import {createStore, combineReducers, bindActionCreators, applyMiddleware} from "redux";
 import thunkMiddleware from 'redux-thunk'
-import {AppStore} from "./stores/app-store";
+import {AppStore} from "angular2-redux";
 import parts from "./reducers/parts-reducer"
 import cart from "./reducers/cart-reducer"
 import users from "./reducers/users-reducer"

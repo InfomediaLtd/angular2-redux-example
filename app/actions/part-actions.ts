@@ -1,5 +1,5 @@
 import {Injectable} from "angular2/core";
-import {Actions} from "./Actions";
+import {Actions} from "angular2-redux";
 
 export const ADD_PART:string = 'ADD_PART';
 
