@@ -9,6 +9,7 @@
     "noImplicitAny": false
   },
   "exclude": [
-    "jspm_packages"
+    "jspm_packages",
+    "node_modules"
   ]
 }
