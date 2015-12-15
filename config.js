@@ -23,28 +23,28 @@ System.config({
 
   map: {
     "InfomediaLtd/angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
-    "angular2": "npm:angular2@2.0.0-alpha.53",
-    "angular2-redux": "npm:angular2-redux@1.0.4",
+    "angular2": "npm:angular2@2.0.0-alpha.54",
+    "angular2-redux": "npm:angular2-redux@1.0.6",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "rackt/reselect": "github:rackt/reselect@2.0.1",
     "redux": "npm:redux@3.0.5",
-    "redux-thunk": "npm:redux-thunk@1.0.0",
+    "redux-thunk": "npm:redux-thunk@1.0.2",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
-    "rxjs": "npm:rxjs@5.0.0-alpha.14",
+    "rxjs": "npm:rxjs@5.0.0-beta.0",
     "ts": "github:frankwallis/plugin-typescript@2.4.3",
-    "typescript": "npm:typescript@1.7.3",
-    "zone.js": "npm:zone.js@0.5.8",
+    "typescript": "npm:typescript@1.7.5",
+    "zone.js": "npm:zone.js@0.5.10",
     "github:InfomediaLtd/angular2-simple-list@master": {
-      "angular2": "npm:angular2@2.0.0-alpha.53",
+      "angular2": "npm:angular2@2.0.0-alpha.54",
       "bootstrap": "github:twbs/bootstrap@3.3.6",
       "css": "github:systemjs/plugin-css@0.1.20",
       "reflect-metadata": "npm:reflect-metadata@0.1.2",
       "ts": "github:frankwallis/plugin-typescript@2.4.3",
-      "zone.js": "npm:zone.js@0.5.8"
+      "zone.js": "npm:zone.js@0.5.10"
     },
     "github:frankwallis/plugin-typescript@2.4.3": {
-      "typescript": "npm:typescript@1.7.3"
+      "typescript": "npm:typescript@1.7.5"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -82,22 +82,22 @@ System.config({
     "github:twbs/bootstrap@3.3.6": {
       "jquery": "github:components/jquery@2.1.4"
     },
-    "npm:angular2-redux@1.0.4": {
-      "angular2": "npm:angular2@2.0.0-alpha.53",
+    "npm:angular2-redux@1.0.6": {
+      "angular2": "npm:angular2@2.0.0-alpha.54",
       "redux": "npm:redux@3.0.5"
     },
-    "npm:angular2@2.0.0-alpha.53": {
+    "npm:angular2@2.0.0-alpha.54": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "es6-promise": "npm:es6-promise@3.0.2",
       "es6-shim": "npm:es6-shim@0.33.13",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "reflect-metadata": "npm:reflect-metadata@0.1.2",
-      "rxjs": "npm:rxjs@5.0.0-alpha.14",
-      "zone.js": "npm:zone.js@0.5.8"
+      "rxjs": "npm:rxjs@5.0.0-beta.0",
+      "zone.js": "npm:zone.js@0.5.10"
     },
     "npm:asn1.js@4.2.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
-      "bn.js": "npm:bn.js@4.5.1",
+      "bn.js": "npm:bn.js@4.5.2",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "inherits": "npm:inherits@2.0.1",
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
@@ -132,14 +132,14 @@ System.config({
       "inherits": "npm:inherits@2.0.1"
     },
     "npm:browserify-rsa@4.0.0": {
-      "bn.js": "npm:bn.js@4.5.1",
+      "bn.js": "npm:bn.js@4.5.2",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "constants": "github:jspm/nodelibs-constants@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "randombytes": "npm:randombytes@2.0.1"
     },
     "npm:browserify-sign@4.0.0": {
-      "bn.js": "npm:bn.js@4.5.1",
+      "bn.js": "npm:bn.js@4.5.2",
       "browserify-rsa": "npm:browserify-rsa@4.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
@@ -175,7 +175,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:create-ecdh@4.0.0": {
-      "bn.js": "npm:bn.js@4.5.1",
+      "bn.js": "npm:bn.js@4.5.2",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "elliptic": "npm:elliptic@6.0.2"
@@ -214,7 +214,7 @@ System.config({
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
     },
     "npm:diffie-hellman@5.0.0": {
-      "bn.js": "npm:bn.js@4.5.1",
+      "bn.js": "npm:bn.js@4.5.2",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "miller-rabin": "npm:miller-rabin@4.0.0",
@@ -222,7 +222,7 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:elliptic@6.0.2": {
-      "bn.js": "npm:bn.js@4.5.1",
+      "bn.js": "npm:bn.js@4.5.2",
       "brorand": "npm:brorand@1.0.5",
       "hash.js": "npm:hash.js@1.0.3",
       "inherits": "npm:inherits@2.0.1",
@@ -246,7 +246,7 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:miller-rabin@4.0.0": {
-      "bn.js": "npm:bn.js@4.5.1",
+      "bn.js": "npm:bn.js@4.5.2",
       "brorand": "npm:brorand@1.0.5"
     },
     "npm:parse-asn1@5.0.0": {
@@ -274,7 +274,7 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
     "npm:public-encrypt@4.0.0": {
-      "bn.js": "npm:bn.js@4.5.1",
+      "bn.js": "npm:bn.js@4.5.2",
       "browserify-rsa": "npm:browserify-rsa@4.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
@@ -308,7 +308,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:rxjs@5.0.0-alpha.14": {
+    "npm:rxjs@5.0.0-beta.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -333,7 +333,7 @@ System.config({
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
     },
-    "npm:zone.js@0.5.8": {
+    "npm:zone.js@0.5.10": {
       "es6-promise": "npm:es6-promise@3.0.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     }
