@@ -1,4 +1,4 @@
-import 'zone.js';
+import 'zone.js/dist/zone.min.js';
 import 'reflect-metadata';
 import "bootstrap/css/bootstrap.css!"
 import {bootstrap} from 'angular2/platform/browser';

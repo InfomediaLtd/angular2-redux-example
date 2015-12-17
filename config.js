@@ -23,7 +23,7 @@ System.config({
 
   map: {
     "InfomediaLtd/angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
-    "angular2": "npm:angular2@2.0.0-alpha.54",
+    "angular2": "npm:angular2@2.0.0-beta.0",
     "angular2-redux": "npm:angular2-redux@1.0.6",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "css": "github:systemjs/plugin-css@0.1.20",
@@ -36,7 +36,7 @@ System.config({
     "typescript": "npm:typescript@1.7.5",
     "zone.js": "npm:zone.js@0.5.10",
     "github:InfomediaLtd/angular2-simple-list@master": {
-      "angular2": "npm:angular2@2.0.0-alpha.54",
+      "angular2": "npm:angular2@2.0.0-beta.0",
       "bootstrap": "github:twbs/bootstrap@3.3.6",
       "css": "github:systemjs/plugin-css@0.1.20",
       "reflect-metadata": "npm:reflect-metadata@0.1.2",
@@ -83,10 +83,10 @@ System.config({
       "jquery": "github:components/jquery@2.1.4"
     },
     "npm:angular2-redux@1.0.6": {
-      "angular2": "npm:angular2@2.0.0-alpha.54",
+      "angular2": "npm:angular2@2.0.0-beta.0",
       "redux": "npm:redux@3.0.5"
     },
-    "npm:angular2@2.0.0-alpha.54": {
+    "npm:angular2@2.0.0-beta.0": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "es6-promise": "npm:es6-promise@3.0.2",
       "es6-shim": "npm:es6-shim@0.33.13",
