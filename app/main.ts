@@ -5,7 +5,7 @@ import {bootstrap} from 'angular2/platform/browser';
 import {provide, injector} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {AppView} from "./components/app";
-import {createStore, combineReducers, bindActionCreators, applyMiddleware} from "redux";
+import {createStore, combineReducers, bindActionCreators, applyMiddleware, compose} from "redux";
 import thunkMiddleware from 'redux-thunk'
 import {AppStore} from "angular2-redux";
 import parts from "./reducers/parts-reducer"
@@ -25,8 +25,10 @@ const loggerMiddleware = store => next => action => {
     return result
 };
 
-let createStoreWithMiddleware = applyMiddleware(thunkMiddleware, loggerMiddleware)(createStore);
-const appStore = new AppStore(createStoreWithMiddleware(combineReducers({ parts, cart, users, films })));
+var applyDevTools = () => window.location.href.match(/[?&]debug=([^&]+)\b/) && window.devToolsExtension ? window.devToolsExtension() : f => f;
+const createStoreWithMiddleware = compose(applyMiddleware(thunkMiddleware, loggerMiddleware), applyDevTools())(createStore);
+var reducers = combineReducers({ parts, cart, users, films });
+const appStore = new AppStore(createStoreWithMiddleware(reducers));
 
 bootstrap(AppView,
     [
