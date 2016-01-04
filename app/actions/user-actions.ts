@@ -3,10 +3,10 @@ import {Injectable} from "angular2/core";
 import {Actions} from "angular2-redux";
 import 'rxjs/add/operator/map';
 
-export const REQUEST_USERS:string = 'REQUEST_USERS';
-export const RECEIVE_USERS:string = 'RECEIVE_USERS';
-export const CURRENT_USER:string = 'CURRENT_USER';
-export const SET_FILM_FILTER:string = 'SET_FILM_FILTER';
+export const REQUEST_USERS = 'REQUEST_USERS';
+export const RECEIVE_USERS = 'RECEIVE_USERS';
+export const CURRENT_USER = 'CURRENT_USER';
+export const SET_FILM_FILTER = 'SET_FILM_FILTER';
 
 @Injectable()
 export class UserActions extends Actions {
@@ -54,6 +54,3 @@ export class UserActions extends Actions {
         }
     }
 }
-
-
-

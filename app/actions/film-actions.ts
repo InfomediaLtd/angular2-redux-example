@@ -3,17 +3,17 @@ import {Injectable} from "angular2/core";
 import {Actions} from "angular2-redux";
 import 'rxjs/add/operator/map';
 
-export const REQUEST_FILMS:string = 'REQUEST_FILMS';
-export const RECEIVE_FILMS:string = 'RECEIVE_FILMS';
-export const REQUEST_FILM:string = 'REQUEST_FILM';
-export const RECEIVE_FILM:string = 'RECEIVE_FILM';
-export const RECEIVE_NUMBER_OF_FILMS:string = 'RECEIVE_NUMBER_OF_FILMS';
-export const CURRENT_FILM:string = 'CURRENT_FILM';
+export const REQUEST_FILMS = 'REQUEST_FILMS';
+export const RECEIVE_FILMS = 'RECEIVE_FILMS';
+export const REQUEST_FILM = 'REQUEST_FILM';
+export const RECEIVE_FILM = 'RECEIVE_FILM';
+export const RECEIVE_NUMBER_OF_FILMS = 'RECEIVE_NUMBER_OF_FILMS';
+export const CURRENT_FILM = 'CURRENT_FILM';
+
+const BASE_URL = "http://swapi.co/api/films/";
 
 @Injectable()
 export class FilmActions extends Actions {
-
-    BASE_URL:string = "http://swapi.co/api/films/";
 
     constructor(private _http:Http) {
         super();
@@ -82,6 +82,3 @@ export class FilmActions extends Actions {
         }
     }
 }
-
-
-

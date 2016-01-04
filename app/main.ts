@@ -1,12 +1,12 @@
-import 'zone.js/dist/zone.min.js';
-import 'reflect-metadata';
+import "zone.js/dist/zone.min.js";
+import "reflect-metadata";
 import "bootstrap/css/bootstrap.css!"
-import {bootstrap} from 'angular2/platform/browser';
-import {provide, injector} from 'angular2/core';
-import {HTTP_PROVIDERS} from 'angular2/http';
+import {bootstrap} from "angular2/platform/browser";
+import {provide} from "angular2/core";
+import {HTTP_PROVIDERS} from "angular2/http";
 import {AppView} from "./components/app";
-import {createStore, combineReducers, bindActionCreators, applyMiddleware, compose} from "redux";
-import thunkMiddleware from 'redux-thunk'
+import {createStore, combineReducers, applyMiddleware, compose} from "redux";
+import thunkMiddleware from "redux-thunk"
 import {AppStore} from "angular2-redux";
 import parts from "./reducers/parts-reducer"
 import cart from "./reducers/cart-reducer"
@@ -19,15 +19,16 @@ import {FilmActions} from "./actions/film-actions";
 
 // Logging middleware (not in use)
 const loggerMiddleware = store => next => action => {
-    //console.log('dispatching', action);
+    //console.log("dispatching", action);
     let result = next(action);
-    //console.log('next state', store.getState());
+    //console.log("next state", store.getState());
     return result
 };
 
-var applyDevTools = () => window.location.href.match(/[?&]debug=([^&]+)\b/) && window.devToolsExtension ? window.devToolsExtension() : f => f;
+const isDebug = window.location.href.match(/[?&]debug=([^&]+)\b/) && window.devToolsExtension;
+const applyDevTools = () => isDebug ? window.devToolsExtension() : f => f;
 const createStoreWithMiddleware = compose(applyMiddleware(thunkMiddleware, loggerMiddleware), applyDevTools())(createStore);
-var reducers = combineReducers({ parts, cart, users, films });
+const reducers = combineReducers({ parts, cart, users, films });
 const appStore = new AppStore(createStoreWithMiddleware(reducers));
 
 bootstrap(AppView,
@@ -37,17 +38,18 @@ bootstrap(AppView,
         CartActions, PartActions, UserActions, FilmActions
     ]);
 
+/* tslint:disable */
 // polyfill for Object.assign (not part of TS yet)
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 if (!Object.assign) {
-    Object.defineProperty(Object, 'assign', {
+    Object.defineProperty(Object, "assign", {
         enumerable: false,
         configurable: true,
         writable: true,
         value: function(target) {
-            'use strict';
+            "use strict";
             if (target === undefined || target === null) {
-                throw new TypeError('Cannot convert first argument to object');
+                throw new TypeError("Cannot convert first argument to object");
             }
 
             var to = Object(target);
