@@ -1,9 +1,15 @@
 {
+  "scripts": {
+    "dist": "gulp dist",
+    "postinstall": "jspm install && npm run typings",
+    "typings": "gulp typings && rm -rf typings && typings install",
+    "test": "karma start karma.conf.js"
+  },
   "jspm": {
     "dependencies": {
-      "InfomediaLtd/angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
       "angular2": "npm:angular2@^2.0.0-beta.0",
-      "angular2-redux": "npm:angular2-redux@^1.0.4",
+      "angular2-redux": "npm:angular2-redux@^1.0.7",
+      "angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "css": "github:systemjs/plugin-css@^0.1.20",
       "rackt/reselect": "github:rackt/reselect@^2.0.1",
@@ -15,10 +21,39 @@
       "zone.js": "npm:zone.js@^0.5.8"
     },
     "devDependencies": {
+      "clean-css": "npm:clean-css@^3.4.9",
       "typescript": "npm:typescript@^1.6.2"
     }
   },
+  "typingsDependencies": {
+    "registry": [
+      "redux",
+      "redux-thunk"
+    ],
+    "file": [
+      "jspm_packages/npm/angular2-redux@VERSION/dist/index.d.ts",
+      "jspm_packages/github/InfomediaLtd/angular2-simple-list@VERSION/app/index.d.ts"
+    ]
+  },
   "devDependencies": {
-    "jspm": "^0.16.19"
+    "angular2": "^2.0.0-beta.0",
+    "clean-css": "^3.4.9",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-insert": "^0.5.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-run": "^1.6.12",
+    "gulp-shell": "^0.5.1",
+    "gulp-tslint": "^4.2.2",
+    "gulp-tslint-stylish": "^1.1.1",
+    "gulp-uglify": "^1.5.1",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.5",
+    "rxjs": "^5.0.0-beta.0",
+    "tsc": "^1.7.5",
+    "tslint": "^3.2.1",
+    "tslint-eslint-rules": "^1.0.1",
+    "typescript": "^1.7.5"
   }
 }

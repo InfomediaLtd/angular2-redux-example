@@ -1,15 +1,17 @@
-build
 dist
 jspm_packages
 node_modules
-dev
-out
+typings
+typings.json
+
+npm-debug.log
 
 *.iml
 .idea/
 .idea_modules/
 
-**.js
-**.js.map
+app/**/*.js
+app/**/*.js.map
 
-!config.js
+test/**/*.js
+test/**/*.js.map

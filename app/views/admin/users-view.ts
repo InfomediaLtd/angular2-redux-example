@@ -1,5 +1,5 @@
 import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter} from 'angular2/core'
-import {SimpleList} from 'InfomediaLtd/angular2-simple-list/app/components/simple-list.ts!';
+import {SimpleList} from 'angular2-simple-list';
 
 @Component({
     selector: 'users',
