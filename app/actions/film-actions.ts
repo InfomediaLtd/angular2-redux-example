@@ -23,7 +23,7 @@ export class FilmActions extends Actions {
         return (dispatch) => {
             dispatch(this.requestFilms());
 
-            this._http.get(`${this.BASE_URL}`)
+            this._http.get(`${BASE_URL}`)
                 .map(result => result.json())
                 .map(json => {
                     dispatch(this.receiveFilms(json.results));
@@ -37,7 +37,7 @@ export class FilmActions extends Actions {
         return (dispatch) => {
             dispatch(this.requestFilm());
 
-            this._http.get(`${this.BASE_URL}${index + 1}/`)
+            this._http.get(`${BASE_URL}${index + 1}/`)
                 .map(result => result.json())
                 .map(json => {
                     dispatch(this.receiveFilm(json));
