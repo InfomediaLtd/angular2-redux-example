@@ -4,7 +4,7 @@ import "bootstrap/css/bootstrap.css!"
 import {bootstrap} from "angular2/platform/browser";
 import {provide} from "angular2/core";
 import {HTTP_PROVIDERS} from "angular2/http";
-import {AppView} from "./components/app";
+import {AppComponent} from "./app";
 import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 import thunkMiddleware from "redux-thunk"
 import {AppStore} from "angular2-redux";
@@ -31,7 +31,7 @@ const createStoreWithMiddleware = compose(applyMiddleware(thunkMiddleware, logge
 const reducers = combineReducers({ parts, cart, users, films });
 const appStore = new AppStore(createStoreWithMiddleware(reducers));
 
-bootstrap(AppView,
+bootstrap(AppComponent,
     [
         provide(AppStore, {useValue: appStore}),
         HTTP_PROVIDERS,

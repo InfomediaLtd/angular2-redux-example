@@ -1,8 +1,8 @@
 import {Component} from 'angular2/core'
 import {AppStore} from "angular2-redux";
-import {AdminComponent} from "./admin-component";
-import {ShoppingComponent} from "./shopping-component";
-import {FilmsComponent} from "./films-component";
+import {AdminComponent} from "./components/admin-component";
+import {ShoppingComponent} from "./components/shopping-component";
+import {FilmsComponent} from "./components/films-component";
 
 @Component({
     selector: 'my-app',
@@ -20,6 +20,6 @@ import {FilmsComponent} from "./films-component";
     `,
     directives: [ShoppingComponent, AdminComponent, FilmsComponent]
 })
-export class AppView {
+export class AppComponent {
 
 }
