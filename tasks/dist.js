@@ -47,7 +47,7 @@ gulp.task("bundle",
 // minify the bundle
 gulp.task("minify", function() {
     gulp.src(paths.targetJS, {cwd: paths.dist})
-        .pipe(uglify())
+        .pipe(uglify({mangle:false}))
         .pipe(concat("index.min.js"))
         .pipe(gulp.dest(paths.dist));
 });
