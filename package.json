@@ -16,7 +16,7 @@
       "redux": "npm:redux@^3.0.4",
       "redux-thunk": "npm:redux-thunk@^1.0.0",
       "reflect-metadata": "npm:reflect-metadata@^0.1.2",
-      "rxjs": "npm:rxjs@^5.0.0-beta.0",
+      "rxjs": "npm:rxjs@5.0.0-beta.0",
       "ts": "github:frankwallis/plugin-typescript@^2.1.4",
       "zone.js": "npm:zone.js@^0.5.8"
     },
@@ -50,7 +50,7 @@
     "gulp-uglify": "^1.5.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
-    "rxjs": "^5.0.0-beta.0",
+    "rxjs": "5.0.0-beta.0",
     "tsc": "^1.7.5",
     "tslint": "^3.2.1",
     "tslint-eslint-rules": "^1.0.1",
