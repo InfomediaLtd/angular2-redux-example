@@ -16,6 +16,8 @@ const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts
 
 @Component({
     selector: 'shopping',
+    providers: [PartActions, CartActions],
+    directives: [PartsView, CartView, AddPartsView],
     template: `
         <h3>Parts</h3>
         <add-part (add)="addPart($event)"></add-part>
@@ -23,8 +25,7 @@ const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts
         <hr/>
         <h3>Cart</h3>
         <cart [parts]="partsInCart" (removeFromCart)="removePartFromCart($event)"></cart>
-    `,
-    directives: [PartsView, CartView, AddPartsView]
+    `
 })
 export class ShoppingComponent {
 

@@ -11,11 +11,6 @@ import {AppStore} from "angular2-redux";
 import parts from "./reducers/parts-reducer"
 import cart from "./reducers/cart-reducer"
 import users from "./reducers/users-reducer"
-import films from "./reducers/films-reducer"
-import {PartActions} from "./actions/part-actions";
-import {CartActions} from "./actions/cart-actions";
-import {UserActions} from "./actions/user-actions";
-import {FilmActions} from "./actions/film-actions";
 
 // Logging middleware (not in use)
 const loggerMiddleware = store => next => action => {
@@ -28,14 +23,13 @@ const loggerMiddleware = store => next => action => {
 const isDebug = window.location.href.match(/[?&]debug=([^&]+)\b/) && window.devToolsExtension;
 const applyDevTools = () => isDebug ? window.devToolsExtension() : f => f;
 const createStoreWithMiddleware = compose(applyMiddleware(thunkMiddleware, loggerMiddleware), applyDevTools())(createStore);
-const reducers = combineReducers({ parts, cart, users, films });
+const reducers = combineReducers({ parts, cart, users });
 const appStore = new AppStore(createStoreWithMiddleware(reducers));
 
 bootstrap(AppComponent,
     [
         provide(AppStore, {useValue: appStore}),
-        HTTP_PROVIDERS,
-        CartActions, PartActions, UserActions, FilmActions
+        HTTP_PROVIDERS
     ]);
 
 /* tslint:disable */
