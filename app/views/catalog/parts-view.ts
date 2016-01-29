@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges} from 'angular2/core'
 
-import {createSelector} from 'rackt/reselect';
+import {createSelector} from 'reselect';
 
 const partsInCartLookupSelector = createSelector(changeRecord => changeRecord.partsInCart.currentValue,
     partsInCart => partsInCart.reduce((map, part) => (map[part.id] = true) && map, {})
@@ -33,4 +33,3 @@ export class PartsView implements OnChanges {
         this.partsInCartLookup = partsInCartLookupSelector(changeRecord);
     }
 }
-

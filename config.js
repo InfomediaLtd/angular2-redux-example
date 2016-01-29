@@ -16,9 +16,6 @@ System.config({
       "main": "main",
       "defaultExtension": "ts"
     },
-    "rackt/reselect": {
-      "main": "src/index.js"
-    },
     "angular2-simple-list": {
       "main": "app/index.ts",
       "defaultExtension": "ts"
@@ -32,10 +29,10 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "clean-css": "npm:clean-css@3.4.9",
     "css": "github:systemjs/plugin-css@0.1.20",
-    "rackt/reselect": "github:rackt/reselect@2.0.1",
     "redux": "npm:redux@3.0.5",
     "redux-thunk": "npm:redux-thunk@1.0.3",
     "reflect-metadata": "npm:reflect-metadata@0.1.3",
+    "reselect": "npm:reselect@2.0.2",
     "rxjs": "npm:rxjs@5.0.0-beta.0",
     "ts": "github:frankwallis/plugin-typescript@2.4.6",
     "typescript": "npm:typescript@1.7.5",

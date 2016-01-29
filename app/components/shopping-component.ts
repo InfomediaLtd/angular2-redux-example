@@ -5,7 +5,7 @@ import {PartActions} from "../actions/part-actions";
 import {PartsView} from "../views/catalog/parts-view";
 import {CartView} from "../views/catalog/cart-view";
 import {AddPartsView} from "../views/catalog/add-part-view";
-import {createSelector} from 'rackt/reselect';
+import {createSelector} from 'reselect';
 
 // select the parts in cart
 const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts,
