@@ -22,6 +22,15 @@ System.config({
     }
   },
 
+  meta: {
+    "angular2/*": {
+      "deps": [
+        "zone.js/dist/zone.min.js",
+        "reflect-metadata"
+      ]
+    }
+  },
+
   map: {
     "angular2": "npm:angular2@2.0.0-beta.2",
     "angular2-redux": "npm:angular2-redux@1.0.8",
@@ -36,7 +45,7 @@ System.config({
     "rxjs": "npm:rxjs@5.0.0-beta.0",
     "ts": "github:frankwallis/plugin-typescript@2.5.6",
     "typescript": "npm:typescript@1.8.0",
-    "zone.js": "npm:zone.js@0.5.10",
+    "zone.js": "npm:zone.js@0.5.11",
     "github:InfomediaLtd/angular2-simple-list@master": {
       "es6-promise": "npm:es6-promise@3.0.2"
     },
@@ -407,6 +416,10 @@ System.config({
       "indexof": "npm:indexof@0.0.1"
     },
     "npm:zone.js@0.5.10": {
+      "es6-promise": "npm:es6-promise@3.0.2",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:zone.js@0.5.11": {
       "es6-promise": "npm:es6-promise@3.0.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     }
