@@ -25,11 +25,15 @@ const loggerMiddleware = store => next => action => {
     return result
 };
 
+const reducers = combineReducers({ parts, cart, users, films });
+const middlewareEnhancer = applyMiddleware(thunkMiddleware, loggerMiddleware);
 const isDebug = window.location.href.match(/[?&]debug=([^&]+)\b/) && window.devToolsExtension;
 const applyDevTools = () => isDebug ? window.devToolsExtension() : f => f;
-const createStoreWithMiddleware = compose(applyMiddleware(thunkMiddleware, loggerMiddleware), applyDevTools())(createStore);
-const reducers = combineReducers({ parts, cart, users, films });
-const appStore = new AppStore(createStoreWithMiddleware(reducers));
+const enhancers = compose(middlewareEnhancer, applyDevTools());
+const createStoreWithEnhancers = enhancers(createStore);
+const reduxAppStore = createStoreWithEnhancers(reducers);
+// const reduxAppStore = createStore(reducers, undefined, enhancers); // new API (not typed yet)
+const appStore = new AppStore(reduxAppStore);
 
 bootstrap(AppComponent,
     [
