@@ -29,7 +29,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "clean-css": "npm:clean-css@3.4.9",
     "css": "github:systemjs/plugin-css@0.1.20",
-    "redux": "npm:redux@3.1.5",
+    "redux": "npm:redux@3.1.6",
     "redux-thunk": "npm:redux-thunk@1.0.3",
     "reflect-metadata": "npm:reflect-metadata@0.1.3",
     "reselect": "npm:reselect@2.0.2",
@@ -103,7 +103,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular2-redux@1.0.8": {
-      "redux": "npm:redux@3.1.5"
+      "redux": "npm:redux@3.1.6"
     },
     "npm:angular2@2.0.0-beta.2": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
@@ -355,7 +355,7 @@ System.config({
       "stream-browserify": "npm:stream-browserify@1.0.0",
       "string_decoder": "npm:string_decoder@0.10.31"
     },
-    "npm:redux@3.1.5": {
+    "npm:redux@3.1.6": {
       "loose-envify": "npm:loose-envify@1.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
