@@ -5,9 +5,7 @@ import {bootstrap} from "angular2/platform/browser";
 import {provide} from "angular2/core";
 import {HTTP_PROVIDERS} from "angular2/http";
 import {AppComponent} from "./app";
-import {createStore, combineReducers, applyMiddleware, compose} from "redux";
-import thunkMiddleware from "redux-thunk"
-import {AppStore} from "angular2-redux";
+import {AppStore,createAppStoreFactory} from "angular2-redux";
 import parts from "./reducers/parts-reducer"
 import cart from "./reducers/cart-reducer"
 import users from "./reducers/users-reducer"
@@ -17,25 +15,7 @@ import {CartActions} from "./actions/cart-actions";
 import {UserActions} from "./actions/user-actions";
 import {FilmActions} from "./actions/film-actions";
 
-const appStoreFactory = () => {
-  // Logging middleware (not in use)
-  const loggerMiddleware = store => next => action => {
-      //console.log("dispatching", action);
-      let result = next(action);
-      //console.log("next state", store.getState());
-      return result
-  };
-  const reducers = combineReducers({ parts, cart, users, films });
-  const middlewareEnhancer = applyMiddleware(thunkMiddleware, loggerMiddleware);
-  const isDebug = window.location.href.match(/[?&]debug=([^&]+)\b/) && window.devToolsExtension;
-  const applyDevTools = () => isDebug ? window.devToolsExtension() : f => f;
-  const enhancers = compose(middlewareEnhancer, applyDevTools());
-  const createStoreWithEnhancers = enhancers(createStore);
-  const reduxAppStore = createStoreWithEnhancers(reducers);
-  // const reduxAppStore = createStore(reducers, undefined, enhancers); // new API (not typed yet)
-  const appStore = new AppStore(reduxAppStore);
-  return appStore;
-}
+const appStoreFactory = createAppStoreFactory({ parts, cart, users, films });
 
 bootstrap(AppComponent,
     [
