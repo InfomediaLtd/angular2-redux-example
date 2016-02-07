@@ -13,7 +13,7 @@ const partsInCartLookupSelector = createSelector(partsInCart => partsInCart,
                 <td>
                     <button style="margin-right:10px;margin-bottom:3px;margin-top:3px"
                         [disabled]="partsInCartLookup[part.id]"
-                        (click)="addToCart.next(part.id)">add
+                        (click)="addToCart.emit(part.id)">add
                     </button>
                 </td>
                 <td>{{part.name}}</td>

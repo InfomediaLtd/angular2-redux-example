@@ -32,7 +32,7 @@ export class FilmSelectionView {
 
     private select(item) {
         this.currentSelection = item;
-        this.current.next(item);
+        this.current.emit(item);
     }
 
 

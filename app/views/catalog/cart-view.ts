@@ -8,7 +8,7 @@ import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'a
             <tr *ngFor="#part of parts">
                 <td>
                     <button style="margin-right:10px;margin-bottom:3px;margin-top:3px"
-                        (click)="removeFromCart.next(part.id)">remove
+                        (click)="removeFromCart.emit(part.id)">remove
                     </button>
                 </td>
                 <td>{{part.name}}</td>
@@ -20,6 +20,6 @@ import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'a
 export class CartView {
 
     @Input() parts = [];
-    @Output() removeFromCart: EventEmitter = new EventEmitter();
+    @Output() removeFromCart:EventEmitter<number> = new EventEmitter();
 
 }

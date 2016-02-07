@@ -14,10 +14,10 @@ import {Component, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2
 })
 export class AddPartsView {
 
-    @Output() add:EventEmitter = new EventEmitter();
+    @Output() add:EventEmitter<string> = new EventEmitter();
 
     private onSubmit($event, value) {
         $event.preventDefault();
-        this.add.next(value);
+        this.add.emit(value);
     }
 }

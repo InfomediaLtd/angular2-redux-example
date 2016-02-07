@@ -7,7 +7,7 @@ import {SimpleList} from 'angular2-simple-list';
         <simple-list
             [list]="data"
             [content]="getContent"
-            (current)="current.next($event)">
+            (current)="current.emit($event)">
     `,
     directives: [SimpleList],
     changeDetection:ChangeDetectionStrategy.OnPush
