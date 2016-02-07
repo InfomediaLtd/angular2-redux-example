@@ -1,4 +1,4 @@
-import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter, OnChanges} from 'angular2/core'
+import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter} from 'angular2/core'
 
 @Component({
     selector: 'film-selection',
@@ -19,16 +19,15 @@ import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter, OnChang
     `],
     changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class FilmSelectionView implements OnChanges {
-
-    @Input() count = 0;
-    @Output() current:EventEmitter = new EventEmitter();
+export class FilmSelectionView {
 
     private currentSelection = null;
     private list;
 
-    ngOnChanges() {
-        this.list = (this.count>0?Array.apply(null, Array(this.count)).map((x, index) => index):[]);
+    @Output() current:EventEmitter<number> = new EventEmitter();
+
+    @Input() set count(count) {
+        this.list = (count>0?Array.apply(null, Array(count)).map((x, index) => index):[]);
     }
 
     private select(item) {

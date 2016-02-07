@@ -1,8 +1,8 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges} from 'angular2/core'
+import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from 'angular2/core'
 import {createSelector} from 'reselect';
 
-const partsInCartLookupSelector = createSelector(changeRecord => changeRecord.partsInCart.currentValue,
-    partsInCart => partsInCart.reduce((partsInCart, part) => Object.assign(partsInCart, {[part.id]:true}), {})
+const partsInCartLookupSelector = createSelector(partsInCart => partsInCart,
+    partsInCart => partsInCart.reduce((partsInCartLookup, part) => Object.assign(partsInCartLookup, {[part.id]:true}), {})
 );
 
 @Component({
@@ -22,14 +22,15 @@ const partsInCartLookupSelector = createSelector(changeRecord => changeRecord.pa
     `,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PartsView implements OnChanges {
-    @Input() parts = [];
-    @Input() partsInCart = [];
-    partsInCartLookup = {};
+export class PartsView {
 
+    private partsInCartLookup = {};
+
+    @Input() parts = [];
     @Output() addToCart:EventEmitter<number> = new EventEmitter();
 
-    ngOnChanges(changeRecord) {
-        this.partsInCartLookup = partsInCartLookupSelector(changeRecord);
+    @Input()
+    set partsInCart(partsInCart) {
+      this.partsInCartLookup = partsInCartLookupSelector(partsInCart);
     }
 }
