@@ -10,7 +10,7 @@ import {createSelector} from 'reselect';
 // select the parts in cart
 const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts,
     (cart, parts) => {
-        const partsById = parts.reduce((map, part) => (map[part.id] = part) && map, {});
+        const partsById = parts.reduce((partsById, part) => Object.assign(partsById, {[part.id]:part}), {});
         return cart.map(id => partsById[id]);
     });
 

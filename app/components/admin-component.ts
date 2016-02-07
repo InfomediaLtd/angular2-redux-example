@@ -55,14 +55,8 @@ export class AdminComponent {
     };
 
     private static getFilter(film) {
-        const ids = film.characters
-            .map(url => AdminComponent.getId(url))
-            .reduce((idsMap, id)=> (idsMap[id] = true) && idsMap, {});
-        return user => ids[AdminComponent.getId(user.url)];
-    };
-
-    private static getId(url) {
-        return url.replace(/[a-z\/\.\:]*/g, "");
+        const urlsInFilm = film.characters.reduce((urls, url) => Object.assign(urls, {[url]:true}) );
+        return user => urlsInFilm[user.url];
     };
 
 }

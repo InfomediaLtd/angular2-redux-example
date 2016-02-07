@@ -1,10 +1,10 @@
 import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges} from 'angular2/core'
-
 import {createSelector} from 'reselect';
 
 const partsInCartLookupSelector = createSelector(changeRecord => changeRecord.partsInCart.currentValue,
-    partsInCart => partsInCart.reduce((map, part) => (map[part.id] = true) && map, {})
+    partsInCart => partsInCart.reduce((partsInCart, part) => Object.assign(partsInCart, {[part.id]:true}), {})
 );
+
 @Component({
     selector: 'parts',
     template: `
@@ -27,7 +27,7 @@ export class PartsView implements OnChanges {
     @Input() partsInCart = [];
     partsInCartLookup = {};
 
-    @Output() addToCart:EventEmitter = new EventEmitter();
+    @Output() addToCart:EventEmitter<number> = new EventEmitter();
 
     ngOnChanges(changeRecord) {
         this.partsInCartLookup = partsInCartLookupSelector(changeRecord);
