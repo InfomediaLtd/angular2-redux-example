@@ -36,7 +36,7 @@ gulp.task("clean", function() {
 
 // copy required sources to the dist folder
 gulp.task("copy", function(){
-    gulp.src(paths.sourcesToCopy).pipe(gulp.dest(paths.dist));
+    return gulp.src(paths.sourcesToCopy).pipe(gulp.dest(paths.dist));
 });
 
 // bundle the app with jspm
@@ -46,7 +46,7 @@ gulp.task("bundle",
 
 // minify the bundle
 gulp.task("minify", function() {
-    gulp.src(paths.targetJS, {cwd: paths.dist})
+    return gulp.src(paths.targetJS, {cwd: paths.dist})
         .pipe(uglify({mangle:false}))
         .pipe(concat("index.min.js"))
         .pipe(gulp.dest(paths.dist));
@@ -54,7 +54,7 @@ gulp.task("minify", function() {
 
 // update index.html to point to the minified bundle
 gulp.task("update-target-html", function(){
-    gulp.src([paths.targetHTML])
+    return gulp.src([paths.targetHTML])
         // remove scripts
         .pipe(replace(/<script.*<\/script>/g, ""))
         .pipe(replace(/<script.*\n.*<\/script>/g, ""))
@@ -69,7 +69,7 @@ gulp.task("update-target-html", function(){
 // entry point - run tasks in a sequence
 gulp.task("dist", function(callback) {
     runSequence(
-        "lint",
+        // "lint",
         "clean",
         "copy",
         "bundle",
