@@ -37,9 +37,9 @@ export class ShoppingComponent {
 
     constructor(appStore:AppStore, partActions:PartActions, cartActions:CartActions) {
 
-        this.addPart            = partActions.createDispatcher(appStore, partActions.addPart);
-        this.addPartToCart      = cartActions.createDispatcher(appStore, cartActions.addToCart);
-        this.removePartFromCart = cartActions.createDispatcher(appStore, cartActions.removeFromCart);
+        this.addPart            = partActions.createDispatcher(partActions.addPart);
+        this.addPartToCart      = cartActions.createDispatcher(cartActions.addToCart);
+        this.removePartFromCart = cartActions.createDispatcher(cartActions.removeFromCart);
 
         appStore.subscribe((state) => {
             this.parts = state.parts;

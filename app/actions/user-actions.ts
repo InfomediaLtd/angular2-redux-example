@@ -1,6 +1,6 @@
 import {Http} from "angular2/http";
 import {Injectable} from "angular2/core";
-import {Actions} from "angular2-redux";
+import {Actions,AppStore} from "angular2-redux";
 import 'rxjs/add/operator/map';
 
 export const REQUEST_USERS = 'REQUEST_USERS';
@@ -11,9 +11,9 @@ export const SET_FILM_FILTER = 'SET_FILM_FILTER';
 @Injectable()
 export class UserActions extends Actions {
 
-    constructor(private _http:Http) {
-        super();
-    }
+  constructor(private _http:Http, appStore:AppStore) {
+      super(appStore);
+  }
 
     fetchUsers() {
         const BASE_URL:string = "http://swapi.co/api/people/";

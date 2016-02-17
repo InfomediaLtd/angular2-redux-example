@@ -1,6 +1,6 @@
 import {Http} from "angular2/http";
 import {Injectable} from "angular2/core";
-import {Actions} from "angular2-redux";
+import {Actions,AppStore} from "angular2-redux";
 import 'rxjs/add/operator/map';
 
 export const REQUEST_FILMS = 'REQUEST_FILMS';
@@ -15,8 +15,8 @@ const BASE_URL = "http://swapi.co/api/films/";
 @Injectable()
 export class FilmActions extends Actions {
 
-    constructor(private _http:Http) {
-        super();
+    constructor(private _http:Http, appStore:AppStore) {
+        super(appStore);
     }
 
     fetchFilms() {

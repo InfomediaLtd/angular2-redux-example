@@ -29,8 +29,8 @@ export class AdminComponent {
 
     constructor(appStore:AppStore, userActions:UserActions) {
 
-        this.setCurrentUser = userActions.createDispatcher(appStore, userActions.setCurrentUser);
-        this.setFilmFilter  = userActions.createDispatcher(appStore, userActions.setFilmFilter);
+        this.setCurrentUser = userActions.createDispatcher(userActions.setCurrentUser);
+        this.setFilmFilter  = userActions.createDispatcher(userActions.setFilmFilter);
 
         const usersToShowSelector = AdminComponent.createUsersToShowSelector();
 
