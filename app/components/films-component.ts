@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core'
+import {Component,OnDestroy} from 'angular2/core'
 import {AppStore} from "angular2-redux";
 import {FilmActions} from "../actions/film-actions";
 import {FilmSelectionView} from "../views/film/film-selection-view";
@@ -16,17 +16,19 @@ import {FilmView} from "../views/film/film-view";
     `,
     directives: [FilmSelectionView, FilmView]
 })
-export class FilmsComponent {
+export class FilmsComponent implements OnDestroy {
 
     private filmsCount;
 
     private currentFilm = null;
     private isFetchingCurrentFilm = false;
 
+    private unsubscribeFromStore:()=>void;
+
     constructor(private _appStore:AppStore,
                 private _filmActions:FilmActions) {
 
-        _appStore.subscribe((state) => {
+        this.unsubscribeFromStore = _appStore.subscribe((state) => {
             this.filmsCount = state.films.count;
             this.currentFilm = state.films.currentFilm;
             this.isFetchingCurrentFilm = state.films.isFetchingFilm;
@@ -40,4 +42,7 @@ export class FilmsComponent {
         this._appStore.dispatch(this._filmActions.setCurrentFilm(index));
         this._appStore.dispatch(this._filmActions.fetchFilm(index ));
     }
+
+    public ngOnDestroy() { this.unsubscribeFromStore(); }
+
 }

@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core'
+import {Component,OnDestroy} from 'angular2/core'
 import {AppStore} from "angular2-redux";
 import {CartActions} from "../actions/cart-actions";
 import {PartActions} from "../actions/part-actions";
@@ -26,7 +26,7 @@ const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts
     `,
     directives: [PartsView, CartView, AddPartsView]
 })
-export class ShoppingComponent {
+export class ShoppingComponent implements OnDestroy {
 
     private parts = [];
     private partsInCart = [];
@@ -35,13 +35,15 @@ export class ShoppingComponent {
     private addPartToCart;
     private removePartFromCart;
 
+    private unsubscribeFromStore:()=>void;
+
     constructor(appStore:AppStore, partActions:PartActions, cartActions:CartActions) {
 
         this.addPart            = partActions.createDispatcher(partActions.addPart);
         this.addPartToCart      = cartActions.createDispatcher(cartActions.addToCart);
         this.removePartFromCart = cartActions.createDispatcher(cartActions.removeFromCart);
 
-        appStore.subscribe((state) => {
+        this.unsubscribeFromStore = appStore.subscribe((state) => {
             this.parts = state.parts;
             this.partsInCart = partsInCartSelector(state);
         });
@@ -56,5 +58,7 @@ export class ShoppingComponent {
         appStore.dispatch(partActions.addPart("Mirror"));
         appStore.dispatch(partActions.addPart("Hood"));
     };
+
+    public ngOnDestroy() { this.unsubscribeFromStore(); }
 
 }

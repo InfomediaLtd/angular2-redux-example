@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core'
+import {Component,OnDestroy} from 'angular2/core'
 import {AppStore} from "angular2-redux";
 import {UserActions} from "../actions/user-actions";
 import {UsersView} from "../views/admin/users-view";
@@ -18,7 +18,7 @@ import {createSelector} from 'reselect';
     `,
     directives: [UsersView, UserView]
 })
-export class AdminComponent {
+export class AdminComponent implements OnDestroy {
 
     private usersToShow = null;
     private currentUser = null;
@@ -27,6 +27,8 @@ export class AdminComponent {
     private setCurrentUser;
     private setFilmFilter;
 
+    private unsubscribeFromStore:()=>void;
+
     constructor(appStore:AppStore, userActions:UserActions) {
 
         this.setCurrentUser = userActions.createDispatcher(userActions.setCurrentUser);
@@ -34,7 +36,7 @@ export class AdminComponent {
 
         const usersToShowSelector = AdminComponent.createUsersToShowSelector();
 
-        appStore.subscribe((state) => {
+        this.unsubscribeFromStore = appStore.subscribe((state) => {
             this.usersToShow = usersToShowSelector(state);
             this.currentUser = state.users.current;
             this.filmFilter = state.users.filmFilter;
@@ -58,5 +60,7 @@ export class AdminComponent {
         const urlsInFilm = film.characters.reduce((urls, url) => Object.assign(urls, {[url]:true}) );
         return user => urlsInFilm[user.url];
     };
+
+    public ngOnDestroy() { this.unsubscribeFromStore(); }
 
 }
