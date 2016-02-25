@@ -23,7 +23,7 @@ System.config({
   },
 
   map: {
-    "angular2": "npm:angular2@2.0.0-beta.2",
+    "angular2": "npm:angular2@2.0.0-beta.7",
     "angular2-redux": "npm:angular2-redux@1.2.1",
     "angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
@@ -33,10 +33,10 @@ System.config({
     "redux-thunk": "npm:redux-thunk@1.0.3",
     "reflect-metadata": "npm:reflect-metadata@0.1.3",
     "reselect": "npm:reselect@2.0.3",
-    "rxjs": "npm:rxjs@5.0.0-beta.0",
+    "rxjs": "npm:rxjs@5.0.0-beta.2",
     "ts": "github:frankwallis/plugin-typescript@2.6.0",
-    "typescript": "npm:typescript@1.8.0",
-    "zone.js": "npm:zone.js@0.5.10",
+    "typescript": "npm:typescript@1.8.2",
+    "zone.js": "npm:zone.js@0.5.15",
     "github:InfomediaLtd/angular2-simple-list@master": {
       "es6-promise": "npm:es6-promise@3.1.2"
     },
@@ -94,7 +94,7 @@ System.config({
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
     "github:twbs/bootstrap@3.3.6": {
-      "jquery": "github:components/jquery@2.2.0"
+      "jquery": "github:components/jquery@2.2.1"
     },
     "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -103,27 +103,28 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular2-redux@1.2.1": {
-      "angular2": "npm:angular2@2.0.0-beta.2",
+      "angular2": "npm:angular2@2.0.0-beta.7",
       "bootstrap": "github:twbs/bootstrap@3.3.6",
       "css": "github:systemjs/plugin-css@0.1.20",
       "redux": "npm:redux@3.3.1",
       "redux-thunk": "npm:redux-thunk@1.0.3",
       "reflect-metadata": "npm:reflect-metadata@0.1.3",
-      "zone.js": "npm:zone.js@0.5.14"
+      "zone.js": "npm:zone.js@0.5.15"
     },
-    "npm:angular2@2.0.0-beta.2": {
+    "npm:angular2@2.0.0-beta.7": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "es6-promise": "npm:es6-promise@3.1.2",
       "es6-shim": "npm:es6-shim@0.33.13",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "reflect-metadata": "npm:reflect-metadata@0.1.2",
-      "rxjs": "npm:rxjs@5.0.0-beta.0",
-      "zone.js": "npm:zone.js@0.5.10"
+      "rxjs": "npm:rxjs@5.0.0-beta.2",
+      "zone.js": "npm:zone.js@0.5.15"
     },
-    "npm:asn1.js@4.4.0": {
+    "npm:asn1.js@4.5.0": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "bn.js": "npm:bn.js@4.10.3",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
       "inherits": "npm:inherits@2.0.1",
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
@@ -300,7 +301,7 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:lodash@4.4.0": {
+    "npm:lodash@4.5.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -318,7 +319,7 @@ System.config({
       "os": "github:jspm/nodelibs-os@0.1.0"
     },
     "npm:parse-asn1@5.0.0": {
-      "asn1.js": "npm:asn1.js@4.4.0",
+      "asn1.js": "npm:asn1.js@4.5.0",
       "browserify-aes": "npm:browserify-aes@1.0.6",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
@@ -369,8 +370,8 @@ System.config({
       "string_decoder": "npm:string_decoder@0.10.31"
     },
     "npm:redux@3.3.1": {
-      "lodash": "npm:lodash@4.4.0",
-      "lodash-es": "npm:lodash-es@4.4.0",
+      "lodash": "npm:lodash@4.5.1",
+      "lodash-es": "npm:lodash-es@4.5.1",
       "loose-envify": "npm:loose-envify@1.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -386,7 +387,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:rxjs@5.0.0-beta.0": {
+    "npm:rxjs@5.0.0-beta.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -421,11 +422,7 @@ System.config({
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
     },
-    "npm:zone.js@0.5.10": {
-      "es6-promise": "npm:es6-promise@3.1.2",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:zone.js@0.5.14": {
+    "npm:zone.js@0.5.15": {
       "es6-promise": "npm:es6-promise@3.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     }
