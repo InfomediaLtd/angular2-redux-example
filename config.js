@@ -24,7 +24,7 @@ System.config({
 
   map: {
     "angular2": "npm:angular2@2.0.0-beta.9",
-    "angular2-redux": "npm:angular2-redux@1.3.0",
+    "angular2-redux": "npm:angular2-redux@1.3.1",
     "angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "clean-css": "npm:clean-css@3.4.10",
@@ -102,7 +102,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:angular2-redux@1.3.0": {
+    "npm:angular2-redux@1.3.1": {
       "angular2": "npm:angular2@2.0.0-beta.9",
       "bootstrap": "github:twbs/bootstrap@3.3.6",
       "css": "github:systemjs/plugin-css@0.1.20",
