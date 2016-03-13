@@ -5,7 +5,7 @@ import {bootstrap} from "angular2/platform/browser";
 import {provide} from "angular2/core";
 import {HTTP_PROVIDERS} from "angular2/http";
 import {AppComponent} from "./app";
-import {AppStore,createAppStoreFactory} from "angular2-redux";
+import {AppStore,createAppStoreFactoryWithOptions} from "angular2-redux";
 import parts from "./reducers/parts-reducer"
 import cart from "./reducers/cart-reducer"
 import users from "./reducers/users-reducer"
@@ -15,7 +15,10 @@ import {CartActions} from "./actions/cart-actions";
 import {UserActions} from "./actions/user-actions";
 import {FilmActions} from "./actions/film-actions";
 
-const appStoreFactory = createAppStoreFactory({ parts, cart, users, films });
+const appStoreFactory = createAppStoreFactoryWithOptions({
+                          reducers:{ parts, cart, users, films },
+                          debug:true
+                        });
 
 bootstrap(AppComponent,
     [
