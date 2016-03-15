@@ -3,14 +3,19 @@ import {Injectable} from "angular2/core";
 import {Actions,AppStore} from "angular2-redux";
 import 'rxjs/add/operator/map';
 
-export const REQUEST_FILMS = 'REQUEST_FILMS';
-export const RECEIVE_FILMS = 'RECEIVE_FILMS';
-export const REQUEST_FILM = 'REQUEST_FILM';
-export const RECEIVE_FILM = 'RECEIVE_FILM';
-export const RECEIVE_NUMBER_OF_FILMS = 'RECEIVE_NUMBER_OF_FILMS';
-export const CURRENT_FILM = 'CURRENT_FILM';
-
 const BASE_URL = "http://swapi.co/api/films/";
+
+type Types = "REQUEST_FILMS" | "RECEIVE_FILMS" |
+             "REQUEST_FILM" | "RECEIVE_FILM" |
+             "RECEIVE_NUMBER_OF_FILMS" | "CURRENT_FILM";
+export const FilmActionTypes = {
+    REQUEST_FILMS: "REQUEST_FILMS" as Types,
+    RECEIVE_FILMS: "RECEIVE_FILMS" as Types,
+    REQUEST_FILM: "REQUEST_FILM" as Types,
+    RECEIVE_FILM: "RECEIVE_FILM" as Types,
+    RECEIVE_NUMBER_OF_FILMS: "RECEIVE_NUMBER_OF_FILMS" as Types,
+    CURRENT_FILM: "CURRENT_FILM" as Types
+};
 
 @Injectable()
 export class FilmActions extends Actions {
@@ -47,37 +52,37 @@ export class FilmActions extends Actions {
     }
 
     requestFilms() {
-        return {type: REQUEST_FILMS};
+        return {type: FilmActionTypes.REQUEST_FILMS};
     }
 
     receiveFilms(films) {
         return {
-            type: RECEIVE_FILMS,
+            type: FilmActionTypes.RECEIVE_FILMS,
             films
         }
     }
 
     receiveNumberOfFilms(count) {
         return {
-            type: RECEIVE_NUMBER_OF_FILMS,
+            type: FilmActionTypes.RECEIVE_NUMBER_OF_FILMS,
             count
         }
     }
 
     requestFilm() {
-        return {type: REQUEST_FILM};
+        return {type: FilmActionTypes.REQUEST_FILM};
     }
 
     receiveFilm(film) {
         return {
-            type: RECEIVE_FILM,
+            type: FilmActionTypes.RECEIVE_FILM,
             film
         }
     }
 
     setCurrentFilm(currentIndex) {
         return {
-            type: CURRENT_FILM,
+            type: FilmActionTypes.CURRENT_FILM,
             currentIndex
         }
     }

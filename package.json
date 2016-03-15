@@ -22,7 +22,7 @@
     },
     "devDependencies": {
       "clean-css": "npm:clean-css@^3.4.9",
-      "typescript": "npm:typescript@^1.6.2"
+      "typescript": "npm:typescript@^1.8"
     }
   },
   "typingsDependencies": {
@@ -55,6 +55,6 @@
     "tsc": "^1.7.5",
     "tslint": "^3.2.1",
     "tslint-eslint-rules": "^1.0.1",
-    "typescript": "^1.7.5"
+    "typescript": "^1.8"
   }
 }

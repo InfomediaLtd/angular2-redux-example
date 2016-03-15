@@ -3,10 +3,13 @@ import {Injectable} from "angular2/core";
 import {Actions,AppStore} from "angular2-redux";
 import 'rxjs/add/operator/map';
 
-export const REQUEST_USERS = 'REQUEST_USERS';
-export const RECEIVE_USERS = 'RECEIVE_USERS';
-export const CURRENT_USER = 'CURRENT_USER';
-export const SET_FILM_FILTER = 'SET_FILM_FILTER';
+type Types = "REQUEST_USERS" | "RECEIVE_USERS" | "CURRENT_USER" | "SET_FILM_FILTER";
+export const UserActionTypes = {
+    REQUEST_USERS: "REQUEST_USERS" as Types,
+    RECEIVE_USERS: "RECEIVE_USERS" as Types,
+    CURRENT_USER: "CURRENT_USER" as Types,
+    SET_FILM_FILTER: "SET_FILM_FILTER" as Types
+};
 
 @Injectable()
 export class UserActions extends Actions {
@@ -29,12 +32,12 @@ export class UserActions extends Actions {
     }
 
     requestUsers() {
-        return {type: REQUEST_USERS};
+        return {type: UserActionTypes.REQUEST_USERS};
     }
 
     receiveUsers(users) {
         return {
-            type: RECEIVE_USERS,
+            type: UserActionTypes.RECEIVE_USERS,
             users,
             updated: Date.now()
         }
@@ -42,14 +45,14 @@ export class UserActions extends Actions {
 
     setCurrentUser(current) {
         return {
-            type: CURRENT_USER,
+            type: UserActionTypes.CURRENT_USER,
             current
         }
     }
 
     setFilmFilter(filmFilter) {
         return {
-            type: SET_FILM_FILTER,
+            type: UserActionTypes.SET_FILM_FILTER,
             filmFilter: filmFilter
         }
     }
