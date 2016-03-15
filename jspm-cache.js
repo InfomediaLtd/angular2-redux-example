@@ -32,9 +32,11 @@
                     return originalFunction.apply(loader, [load]).then(function(translated) {
                         file.format = load.metadata.format;
                         file.contents = translated;
-                        return db.files.add(file).then(function() {
-                            return translated;
-                        }).catch(log);
+                        return (cached ? db.files.delete(file.url) : Promise.resolve())
+              						.then(db.files.add(file))
+              						.then(function() {
+              							return translated;
+              						}).catch(log);
                     });
                 } else {
                     // console.log(file.url + " from cache");
@@ -52,7 +54,9 @@
     // override fetch
     System.originalFetch = System.fetch;
     System.fetch = function (load) {
-
+      if (!load.metadata.deps) {
+          load.metadata.deps = []; // avoid https://github.com/systemjs/systemjs/pull/1158
+      }
         var file = {url:"load_"+load.address, hash:hash(load.address)};
         return cachedCall(this, load, file, System.originalFetch, function() {
           return load.address.search(onlyScriptDependencies)>=0;
