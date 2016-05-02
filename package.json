@@ -7,8 +7,8 @@
   },
   "jspm": {
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-beta.14",
-      "angular2-redux": "npm:angular2-redux@^1.3.0",
+      "angular2": "npm:angular2@^2.0.0-beta.17",
+      "angular2-redux": "npm:angular2-redux@^3.0.0",
       "angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "crypto": "github:jspm/nodelibs-crypto@^0.1.0",
