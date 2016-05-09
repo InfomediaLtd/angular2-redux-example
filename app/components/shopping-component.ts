@@ -1,4 +1,4 @@
-import {Component,OnDestroy} from 'angular2/core'
+import {Component,OnDestroy} from '@angular/core'
 import {AppStore} from "angular2-redux";
 import {CartActions} from "../actions/cart-actions";
 import {PartActions} from "../actions/part-actions";

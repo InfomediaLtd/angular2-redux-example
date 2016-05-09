@@ -1,4 +1,4 @@
-import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter} from 'angular2/core'
+import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter} from '@angular/core'
 import {SimpleList} from 'angular2-simple-list';
 
 @Component({

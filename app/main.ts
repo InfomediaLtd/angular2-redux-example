@@ -1,9 +1,9 @@
 import "zone.js";
 import "reflect-metadata";
 import "bootstrap/css/bootstrap.css!"
-import {bootstrap} from "angular2/platform/browser";
-import {provide} from "angular2/core";
-import {HTTP_PROVIDERS} from "angular2/http";
+import {bootstrap} from "@angular/platform-browser-dynamic";
+import {provide} from "@angular/core";
+import {HTTP_PROVIDERS} from "@angular/http";
 import {AppComponent} from "./app";
 import {AppStore,createAppStoreFactoryWithOptions} from "angular2-redux";
 import parts from "./reducers/parts-reducer"

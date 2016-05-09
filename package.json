@@ -1,13 +1,18 @@
 {
   "scripts": {
     "dist": "gulp dist",
-    "postinstall": "jspm install && npm run typings",
-    "typings": "rm -rf typings && gulp typings && typings install",
-    "test": "karma start karma.conf.js"
+    "postinstall-bak": "jspm install && npm run typings",
+    "typings": "rm -rf typings && gulp typings && typings install"
   },
   "jspm": {
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-beta.17",
+      "@angular/common": "npm:@angular/common@^2.0.0-rc.1",
+      "@angular/compiler": "npm:@angular/compiler@^2.0.0-rc.1",
+      "@angular/core": "npm:@angular/core@^2.0.0-rc.1",
+      "@angular/http": "npm:@angular/http@^2.0.0-rc.1",
+      "@angular/platform-browser": "npm:@angular/platform-browser@^2.0.0-rc.1",
+      "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.0.0-rc.1",
+      "@angular/router-deprecated": "npm:@angular/router-deprecated@^2.0.0-rc.1",
       "angular2-redux": "npm:angular2-redux@^3.0.0",
       "angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
@@ -17,7 +22,7 @@
       "redux-thunk": "npm:redux-thunk@^1.0.0",
       "reflect-metadata": "npm:reflect-metadata@^0.1.2",
       "reselect": "npm:reselect@^2.0.2",
-      "rxjs": "npm:rxjs@^5.0.0-beta.5",
+      "rxjs": "npm:rxjs@5.0.0-beta.6",
       "ts": "github:frankwallis/plugin-typescript@^2.1.4",
       "zone.js": "npm:zone.js@^0.6.10"
     },
@@ -37,7 +42,12 @@
     ]
   },
   "devDependencies": {
-    "angular2": "^2.0.0-beta.14",
+    "@angular/common": "^2.0.0-rc.1",
+    "@angular/compiler": "^2.0.0-rc.1",
+    "@angular/core": "^2.0.0-rc.1",
+    "@angular/http": "^2.0.0-rc.1",
+    "@angular/platform-browser": "^2.0.0-rc.1",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.1",
     "clean-css": "^3.4.9",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
@@ -52,7 +62,7 @@
     "jspm": "^0.16.33",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
-    "rxjs": "^5.0.0-beta.5",
+    "rxjs": "5.0.0-beta.6",
     "tslint": "^3.2.1",
     "tslint-eslint-rules": "^1.0.1",
     "typescript": "^1.8"

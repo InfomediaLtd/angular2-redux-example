@@ -1,4 +1,4 @@
-import {Injectable} from "angular2/core";
+import {Injectable} from "@angular/core";
 import {Actions,AppStore} from "angular2-redux";
 
 export const ADD_PART = 'ADD_PART';

@@ -1,4 +1,4 @@
-import {Injectable} from "angular2/core";
+import {Injectable} from "@angular/core";
 import {Actions,AppStore} from "angular2-redux";
 
 type Types = "ADD_TO_CART" | "REMOVE_FROM_CART";

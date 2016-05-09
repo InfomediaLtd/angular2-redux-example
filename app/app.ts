@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core'
+import {Component} from '@angular/core'
 import {AppStore} from "angular2-redux";
 import {AdminComponent} from "./components/admin-component";
 import {ShoppingComponent} from "./components/shopping-component";

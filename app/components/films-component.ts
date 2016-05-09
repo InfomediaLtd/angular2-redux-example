@@ -1,4 +1,4 @@
-import {Component,OnDestroy} from 'angular2/core'
+import {Component,OnDestroy} from '@angular/core'
 import {AppStore} from "angular2-redux";
 import {FilmActions} from "../actions/film-actions";
 import {FilmSelectionView} from "../views/film/film-selection-view";

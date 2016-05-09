@@ -1,4 +1,4 @@
-import {Component,OnDestroy} from 'angular2/core'
+import {Component,OnDestroy} from '@angular/core'
 import {AppStore} from "angular2-redux";
 import {UserActions} from "../actions/user-actions";
 import {UsersView} from "../views/admin/users-view";
