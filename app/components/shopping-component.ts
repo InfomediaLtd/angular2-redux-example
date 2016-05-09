@@ -1,4 +1,4 @@
-import {Component,OnDestroy} from '@angular/core'
+import {Component} from '@angular/core'
 import {AppStore} from "angular2-redux";
 import {CartActions} from "../actions/cart-actions";
 import {PartActions} from "../actions/part-actions";
@@ -19,17 +19,17 @@ const partsInCartSelector = createSelector(state=>state.cart, state=>state.parts
     template: `
         <h3>Parts</h3>
         <add-part (add)="addPart($event)"></add-part>
-        <parts [parts]="parts" [partsInCart]="partsInCart" (addToCart)="addPartToCart($event)"></parts>
+        <parts [parts]="parts$ | async" [partsInCart]="partsInCart$ | async" (addToCart)="addPartToCart($event)"></parts>
         <hr/>
         <h3>Cart</h3>
-        <cart [parts]="partsInCart" (removeFromCart)="removePartFromCart($event)"></cart>
+        <cart [parts]="partsInCart$ | async" (removeFromCart)="removePartFromCart($event)"></cart>
     `,
     directives: [PartsView, CartView, AddPartsView]
 })
-export class ShoppingComponent implements OnDestroy {
+export class ShoppingComponent {
 
-    private parts = [];
-    private partsInCart = [];
+    private parts$ = null;
+    private partsInCart$ = null;
 
     private addPart;
     private addPartToCart;
@@ -43,10 +43,8 @@ export class ShoppingComponent implements OnDestroy {
         this.addPartToCart      = cartActions.createDispatcher(cartActions.addToCart);
         this.removePartFromCart = cartActions.createDispatcher(cartActions.removeFromCart);
 
-        this.unsubscribeFromStore = appStore.subscribe((state) => {
-            this.parts = state.parts;
-            this.partsInCart = partsInCartSelector(state);
-        });
+        this.parts$ = appStore.select("parts");
+        this.partsInCart$ = appStore.select(partsInCartSelector);
 
         ShoppingComponent.createInitialSetOfParts(appStore, partActions);
 
@@ -58,7 +56,5 @@ export class ShoppingComponent implements OnDestroy {
         appStore.dispatch(partActions.addPart("Mirror"));
         appStore.dispatch(partActions.addPart("Hood"));
     };
-
-    public ngOnDestroy() { this.unsubscribeFromStore(); }
 
 }

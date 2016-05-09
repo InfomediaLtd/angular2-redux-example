@@ -14,14 +14,15 @@ import {createSelector} from 'reselect';
         <hr/>
         <h3>Current User</h3>
         <br/>
-        <user [data]="currentUser"></user>
+        <user [data]="currentUser$ | async"></user>
     `,
     directives: [UsersView, UserView]
 })
 export class AdminComponent implements OnDestroy {
 
+    private currentUser$ = null;
+
     private usersToShow = null;
-    private currentUser = null;
     private filmFilter = null;
 
     private setCurrentUser;
@@ -35,14 +36,13 @@ export class AdminComponent implements OnDestroy {
         this.setFilmFilter  = userActions.createDispatcher(userActions.setFilmFilter);
 
         const usersToShowSelector = AdminComponent.createUsersToShowSelector();
+        
+        this.currentUser$ = appStore.select(state => state.users.current);
 
         this.unsubscribeFromStore = appStore.subscribe((state) => {
             this.usersToShow = usersToShowSelector(state);
-            this.currentUser = state.users.current;
             this.filmFilter = state.users.filmFilter;
-
         });
-
         appStore.dispatch(userActions.fetchUsers());
 
     }

@@ -8,9 +8,9 @@ import {FilmView} from "../views/film/film-view";
     selector: 'films-component',
     template: `
         <h3>Films</h3>
-        <film-selection [count]="filmsCount" (current)="setCurrentFilm($event)"></film-selection>
+        <film-selection [count]="filmsCount$ | async" (current)="setCurrentFilm($event)"></film-selection>
         <div [ngClass]="{'text-muted':isFetchingCurrentFilm,'text-primary':!isFetchingCurrentFilm}" style="margin-top:20px;">
-            <film [data]="currentFilm" [loading]="isFetchingCurrentFilm"></film>
+            <film [data]="currentFilm$ | async" [loading]="isFetchingCurrentFilm"></film>
         </div>
 
     `,
@@ -18,9 +18,8 @@ import {FilmView} from "../views/film/film-view";
 })
 export class FilmsComponent implements OnDestroy {
 
-    private filmsCount;
-
-    private currentFilm = null;
+    private filmsCount$;
+    private currentFilm$ = null;
     private isFetchingCurrentFilm = false;
 
     private unsubscribeFromStore:()=>void;
@@ -28,9 +27,10 @@ export class FilmsComponent implements OnDestroy {
     constructor(private _appStore:AppStore,
                 private _filmActions:FilmActions) {
 
+        this.filmsCount$ = _appStore.select(state => state.films.count);
+        this.currentFilm$ = _appStore.select(state => state.films.currentFilm);
+
         this.unsubscribeFromStore = _appStore.subscribe((state) => {
-            this.filmsCount = state.films.count;
-            this.currentFilm = state.films.currentFilm;
             this.isFetchingCurrentFilm = state.films.isFetchingFilm;
 
         });
