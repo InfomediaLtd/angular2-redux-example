@@ -6,7 +6,7 @@ import {PartsView} from "../views/catalog/parts-view";
 import {CartView} from "../views/catalog/cart-view";
 import {AddPartsView} from "../views/catalog/add-part-view";
 import {createSelector} from 'reselect';
-import {partsByIdSelector} from "../selectors/parts-selector";
+import {partsSelector,partsByIdSelector} from "../selectors/parts-selector";
 import {cartSelector} from "../selectors/cart-selector";
 
 const partsInCartSelector = createSelector(cartSelector, partsByIdSelector, (cart, partsById) => cart.map(id => partsById[id]));
@@ -40,7 +40,7 @@ export class ShoppingComponent {
         this.addPartToCart      = cartActions.createDispatcher(cartActions.addToCart);
         this.removePartFromCart = cartActions.createDispatcher(cartActions.removeFromCart);
 
-        this.parts$ = appStore.select("parts");
+        this.parts$ = appStore.select(partsSelector);
         this.partsInCart$ = appStore.select(partsInCartSelector);
 
         ShoppingComponent.createInitialSetOfParts(appStore, partActions);
