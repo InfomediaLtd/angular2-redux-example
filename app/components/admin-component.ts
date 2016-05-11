@@ -4,6 +4,7 @@ import {UserActions} from "../actions/user-actions";
 import {UsersView} from "../views/admin/users-view";
 import {UserView} from "../views/admin/user-view";
 import {createSelector} from 'reselect';
+import {currentUserSelector,currentFilmSelector,filterSelector} from "../selectors/users-selector";
 
 @Component({
     selector: 'admin',
@@ -37,7 +38,7 @@ export class AdminComponent implements OnDestroy {
 
         const usersToShowSelector = AdminComponent.createUsersToShowSelector();
         
-        this.currentUser$ = appStore.select(state => state.users.current);
+        this.currentUser$ = appStore.select(currentUserSelector);
 
         this.unsubscribeFromStore = appStore.subscribe((state) => {
             this.usersToShow = usersToShowSelector(state);
@@ -48,7 +49,7 @@ export class AdminComponent implements OnDestroy {
     }
 
     private static createUsersToShowSelector() {
-        const currentFilmSelector = createSelector(state => state.users.filmFilter, state => state.films.currentFilm,
+        const currentFilmSelector = createSelector(filterSelector, state => state.films.currentFilm,
             (filmFilter, currentFilm) => filmFilter && currentFilm ? currentFilm : null
         );
         return createSelector(state => state.users.list, currentFilmSelector,

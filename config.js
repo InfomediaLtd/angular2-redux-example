@@ -30,7 +30,7 @@ System.config({
     "@angular/platform-browser": "npm:@angular/platform-browser@2.0.0-rc.1",
     "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@2.0.0-rc.1",
     "@angular/router-deprecated": "npm:@angular/router-deprecated@2.0.0-rc.1",
-    "angular2-redux": "npm:angular2-redux@3.0.0",
+    "angular2-redux": "npm:angular2-redux@3.1.1",
     "angular2-simple-list": "github:InfomediaLtd/angular2-simple-list@master",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "clean-css": "npm:clean-css@3.4.12",
@@ -144,9 +144,9 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:angular2-redux@3.0.0": {
+    "npm:angular2-redux@3.1.1": {
       "redux": "npm:redux@3.5.2",
-      "redux-thunk": "npm:redux-thunk@2.0.1",
+      "redux-thunk": "npm:redux-thunk@2.1.0",
       "rxjs": "npm:rxjs@5.0.0-beta.6"
     },
     "npm:asn1.js@4.6.0": {
@@ -327,7 +327,7 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:lodash@4.11.1": {
+    "npm:lodash@4.12.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -396,8 +396,8 @@ System.config({
       "string_decoder": "npm:string_decoder@0.10.31"
     },
     "npm:redux@3.5.2": {
-      "lodash": "npm:lodash@4.11.1",
-      "lodash-es": "npm:lodash-es@4.11.1",
+      "lodash": "npm:lodash@4.12.0",
+      "lodash-es": "npm:lodash-es@4.12.0",
       "loose-envify": "npm:loose-envify@1.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "symbol-observable": "npm:symbol-observable@0.2.4"
