@@ -1,3 +1,4 @@
 export const currentUserSelector = state => state.users.current
-export const filterSelector = state => state.users.filmFilter
-export const currentFilmSelector = state => state.films.currentFilm
+export const filmFilterSelector = state => state.users.filmFilter;
+export const usersListSelector = state => state.users.list;
+
