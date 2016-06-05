@@ -6,8 +6,8 @@ import {PartsView} from "../views/catalog/parts-view";
 import {CartView} from "../views/catalog/cart-view";
 import {AddPartsView} from "../views/catalog/add-part-view";
 import {createSelector} from 'reselect';
-import {partsSelector,partsByIdSelector} from "../selectors/parts-selector";
-import {cartSelector} from "../selectors/cart-selector";
+import {partsSelector,partsByIdSelector} from "../reducers/parts-reducer";
+import {cartSelector} from "../reducers/cart-reducer";
 
 const partsInCartSelector = createSelector(cartSelector, partsByIdSelector, (cart, partsById) => cart.map(id => partsById[id]));
 

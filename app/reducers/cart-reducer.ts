@@ -11,3 +11,5 @@ export default (state = [], action:CartAction = {type:"?"}) => {
             return state;
     }
 };
+
+export const cartSelector = state => state.cart

@@ -3,7 +3,7 @@ import {AppStore} from "angular2-redux";
 import {FilmActions} from "../actions/film-actions";
 import {FilmSelectionView} from "../views/film/film-selection-view";
 import {FilmView} from "../views/film/film-view";
-import {currentFilmSelector,filmsCountSelector,isFetchingFilmSelector} from "../selectors/films-selector";
+import {currentFilmSelector,filmsCountSelector,isFetchingFilmSelector} from "../reducers/films-reducer";
 
 @Component({
     selector: 'films-component',
