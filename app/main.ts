@@ -6,17 +6,14 @@ import {provide} from "@angular/core";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {AppComponent} from "./app";
 import {AppStore,createAppStoreFactoryWithOptions} from "angular2-redux";
-import parts from "./reducers/parts-reducer"
-import cart from "./reducers/cart-reducer"
-import users from "./reducers/users-reducer"
-import films from "./reducers/films-reducer"
+import reducers from "./reducers/app-reducer"
 import {PartActions} from "./actions/part-actions";
 import {CartActions} from "./actions/cart-actions";
 import {UserActions} from "./actions/user-actions";
 import {FilmActions} from "./actions/film-actions";
 
 const appStoreFactory = createAppStoreFactoryWithOptions({
-                          reducers:{ parts, cart, users, films },
+                          reducers,
                           debug:true
                         });
 

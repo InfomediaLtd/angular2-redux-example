@@ -7,6 +7,11 @@ export const CartActionTypes = {
     REMOVE_FROM_CART: "REMOVE_FROM_CART" as Types
 };
 
+export interface CartAction {
+    type:string;
+    id?:string;
+}
+
 @Injectable()
 export class CartActions extends Actions {
 
@@ -15,10 +20,7 @@ export class CartActions extends Actions {
     }
 
     addToCart(id) {
-        let action = {type: CartActionTypes.ADD_TO_CART, id};
-        let json = JSON.stringify(action);
-        action = JSON.parse(json);
-        return action;
+        return {type: CartActionTypes.ADD_TO_CART, id};
     };
 
     removeFromCart(id) {

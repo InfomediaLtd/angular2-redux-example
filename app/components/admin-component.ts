@@ -4,7 +4,8 @@ import {UserActions} from "../actions/user-actions";
 import {UsersView} from "../views/admin/users-view";
 import {UserView} from "../views/admin/user-view";
 import {createSelector} from 'reselect';
-import {currentUserSelector,currentFilmSelector,filterSelector} from "../selectors/users-selector";
+import {usersListSelector,currentUserSelector,filterSelector} from "../reducers/users-reducer";
+import {currentFilmSelector} from "../reducers/films-reducer";
 
 @Component({
     selector: 'admin',
@@ -49,10 +50,10 @@ export class AdminComponent implements OnDestroy {
     }
 
     private static createUsersToShowSelector() {
-        const currentFilmSelector = createSelector(filterSelector, state => state.films.currentFilm,
+        const currentFilmWithFilterSelector = createSelector(filterSelector, currentFilmSelector,
             (filmFilter, currentFilm) => filmFilter && currentFilm ? currentFilm : null
         );
-        return createSelector(state => state.users.list, currentFilmSelector,
+        return createSelector(usersListSelector, currentFilmWithFilterSelector,
             (users, currentFilm) => currentFilm ? users.filter(AdminComponent.getFilter(currentFilm)) : users
         );
     };

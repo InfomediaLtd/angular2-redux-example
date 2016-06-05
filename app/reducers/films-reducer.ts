@@ -1,6 +1,6 @@
-import {FilmActionTypes} from '../actions/film-actions';
+import {FilmActionTypes,FilmAction} from '../actions/film-actions';
 
-export default (state = [], action:any = {}) => {
+export default (state = [], action:FilmAction = {type:"?"}) => {
     switch (action.type) {
         case FilmActionTypes.REQUEST_FILMS:
             return Object.assign({}, state, {isFetchingFilms: true});
@@ -18,3 +18,5 @@ export default (state = [], action:any = {}) => {
             return state;
     }
 };
+
+export const currentFilmSelector = state => state.films.currentFilm

@@ -1,6 +1,6 @@
-import {CartActionTypes} from '../actions/cart-actions';
+import {CartActionTypes,CartAction} from '../actions/cart-actions';
 
-export default (state = [], action:any = {}) => {
+export default (state = [], action:CartAction = {type:"?"}) => {
 
     switch (action.type) {
         case CartActionTypes.ADD_TO_CART:

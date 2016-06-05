@@ -17,6 +17,14 @@ export const FilmActionTypes = {
     CURRENT_FILM: "CURRENT_FILM" as Types
 };
 
+export interface FilmAction {
+    type:string;
+    count?;
+    films?;
+    film?;
+    currentIndex?;
+}
+
 @Injectable()
 export class FilmActions extends Actions {
 

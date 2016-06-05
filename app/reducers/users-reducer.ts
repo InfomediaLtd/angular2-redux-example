@@ -1,6 +1,6 @@
-import {UserActionTypes} from '../actions/user-actions';
+import {UserActionTypes,UserAction} from '../actions/user-actions';
 
-export default (state = {}, action:any = {}) => {
+export default (state = {}, action:UserAction = {type:"?"}) => {
     switch (action.type) {
         case UserActionTypes.REQUEST_USERS:
             return Object.assign({}, state, {isFetching: true});
@@ -14,3 +14,7 @@ export default (state = {}, action:any = {}) => {
             return state;
     }
 };
+
+export const currentUserSelector = state => state.users.current
+export const filterSelector = state => state.users.filmFilter
+export const usersListSelector = state => state.users.list

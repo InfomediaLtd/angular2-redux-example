@@ -11,6 +11,14 @@ export const UserActionTypes = {
     SET_FILM_FILTER: "SET_FILM_FILTER" as Types
 };
 
+export interface UserAction {
+    type:string;
+    users?;
+    updated?:Date;
+    current?;
+    filmFilter?:string;
+} 
+
 @Injectable()
 export class UserActions extends Actions {
 

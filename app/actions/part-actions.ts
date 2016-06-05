@@ -8,6 +8,12 @@ export const PartActionTypes = {
     ADD_PART: "ADD_PART" as Types
 };
 
+export interface PartAction {
+    type:String;
+    id?:number;
+    name?:string;
+}
+
 @Injectable()
 export class PartActions extends Actions {
     private id:number = 11;
