@@ -6,6 +6,7 @@ import {UserView} from "../views/admin/user-view";
 import {createSelector} from 'reselect';
 import {usersListSelector,currentUserSelector,filterSelector} from "../reducers/users-reducer";
 import {currentFilmSelector} from "../reducers/films-reducer";
+import {Subscription} from "rxjs";
 
 @Component({
     selector: 'admin',
@@ -30,7 +31,9 @@ export class AdminComponent implements OnDestroy {
     private setCurrentUser;
     private setFilmFilter;
 
-    private unsubscribeFromStore:()=>void;
+    private usersSubscription:Subscription;
+    private filmFilterSubscription:Subscription;
+    //private unsubscribeFromStore:()=>void;
 
     constructor(appStore:AppStore, userActions:UserActions) {
 
@@ -41,10 +44,17 @@ export class AdminComponent implements OnDestroy {
         
         this.currentUser$ = appStore.select(currentUserSelector);
 
-        this.unsubscribeFromStore = appStore.subscribe((state) => {
+        this.usersSubscription = appStore.select(usersToShowSelector).subscribe(usersToShow => {
+            this.usersToShow = usersToShow;
+        });
+        this.filmFilterSubscription = appStore.select(state=>state.users.filmFilter).subscribe(filmFilter => {
+            this.filmFilter = filmFilter;
+        })
+        /*this.unsubscribeFromStore = appStore.subscribe((state) => {
             this.usersToShow = usersToShowSelector(state);
             this.filmFilter = state.users.filmFilter;
-        });
+        });*/
+        
         appStore.dispatch(userActions.fetchUsers());
 
     }
@@ -63,6 +73,9 @@ export class AdminComponent implements OnDestroy {
         return user => urlsInFilm[user.url];
     };
 
-    public ngOnDestroy() { this.unsubscribeFromStore(); }
+    public ngOnDestroy() {
+        this.usersSubscription.unsubscribe();
+        this.filmFilterSubscription.unsubscribe();
+    }
 
 }
