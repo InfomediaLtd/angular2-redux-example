@@ -1,5 +1,4 @@
 import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter} from '@angular/core'
-import {SimpleList} from 'angular2-simple-list';
 
 @Component({
     selector: 'users',
@@ -9,12 +8,11 @@ import {SimpleList} from 'angular2-simple-list';
             [content]="getContent"
             (current)="current.emit($event)">
     `,
-    directives: [SimpleList],
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UsersView {
     @Input() data = {};
-    @Output() current:EventEmitter = new EventEmitter();
+    @Output() current:EventEmitter<string> = new EventEmitter<string>();
 
     getContent(user:any):string { return user.name; }
 

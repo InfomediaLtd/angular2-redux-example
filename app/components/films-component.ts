@@ -1,8 +1,6 @@
 import {Component} from '@angular/core'
 import {AppStore} from "angular2-redux";
 import {FilmActions} from "../actions/film-actions";
-import {FilmSelectionView} from "../views/film/film-selection-view";
-import {FilmView} from "../views/film/film-view";
 import {currentFilmSelector,filmsCountSelector,isFetchingFilmSelector} from "../reducers/films-reducer";
 
 @Component({
@@ -14,8 +12,7 @@ import {currentFilmSelector,filmsCountSelector,isFetchingFilmSelector} from "../
             <film [data]="currentFilm$ | async" [loading]="isFetchingCurrentFilm"></film>
         </div>
 
-    `,
-    directives: [FilmSelectionView, FilmView]
+    `
 })
 export class FilmsComponent {
 

@@ -1,8 +1,6 @@
 import {Component,OnDestroy} from '@angular/core'
 import {AppStore} from "angular2-redux";
 import {UserActions} from "../actions/user-actions";
-import {UsersView} from "../views/admin/users-view";
-import {UserView} from "../views/admin/user-view";
 import {createSelector} from 'reselect';
 import {usersListSelector,currentUserSelector,filterSelector} from "../reducers/users-reducer";
 import {currentFilmSelector} from "../reducers/films-reducer";
@@ -18,8 +16,7 @@ import {Subscription} from "rxjs";
         <h3>Current User</h3>
         <br/>
         <user [data]="currentUser$ | async"></user>
-    `,
-    directives: [UsersView, UserView]
+    `
 })
 export class AdminComponent implements OnDestroy {
 

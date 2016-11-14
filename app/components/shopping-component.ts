@@ -2,9 +2,6 @@ import {Component} from '@angular/core'
 import {AppStore} from "angular2-redux";
 import {CartActions} from "../actions/cart-actions";
 import {PartActions} from "../actions/part-actions";
-import {PartsView} from "../views/catalog/parts-view";
-import {CartView} from "../views/catalog/cart-view";
-import {AddPartsView} from "../views/catalog/add-part-view";
 import {createSelector} from 'reselect';
 import {partsSelector,partsByIdSelector} from "../reducers/parts-reducer";
 import {cartSelector} from "../reducers/cart-reducer";
@@ -20,8 +17,7 @@ const partsInCartSelector = createSelector(cartSelector, partsByIdSelector, (car
         <hr/>
         <h3>Cart</h3>
         <cart [parts]="partsInCart$ | async" (removeFromCart)="removePartFromCart($event)"></cart>
-    `,
-    directives: [PartsView, CartView, AddPartsView]
+    `
 })
 export class ShoppingComponent {
 
