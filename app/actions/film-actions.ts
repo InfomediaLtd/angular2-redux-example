@@ -1,20 +1,16 @@
 import {Http} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Actions,AppStore} from "angular2-redux";
+import {FilmService} from "../services/film.service";
 import 'rxjs/add/operator/map';
 
-const BASE_URL = "http://swapi.co/api/films/";
-
-type Types = "REQUEST_FILMS" | "RECEIVE_FILMS" |
-             "REQUEST_FILM" | "RECEIVE_FILM" |
-             "RECEIVE_NUMBER_OF_FILMS" | "CURRENT_FILM";
-export const FilmActionTypes = {
-    REQUEST_FILMS: "REQUEST_FILMS" as Types,
-    RECEIVE_FILMS: "RECEIVE_FILMS" as Types,
-    REQUEST_FILM: "REQUEST_FILM" as Types,
-    RECEIVE_FILM: "RECEIVE_FILM" as Types,
-    RECEIVE_NUMBER_OF_FILMS: "RECEIVE_NUMBER_OF_FILMS" as Types,
-    CURRENT_FILM: "CURRENT_FILM" as Types
+export enum FilmActionTypes {
+    REQUEST_FILMS = "REQUEST_FILMS" as any,
+    RECEIVE_FILMS = "RECEIVE_FILMS" as any,
+    REQUEST_FILM = "REQUEST_FILM" as any,
+    RECEIVE_FILM = "RECEIVE_FILM" as any,
+    RECEIVE_NUMBER_OF_FILMS = "RECEIVE_NUMBER_OF_FILMS" as any,
+    CURRENT_FILM = "CURRENT_FILM" as any
 };
 
 export interface FilmAction {
@@ -28,7 +24,7 @@ export interface FilmAction {
 @Injectable()
 export class FilmActions extends Actions {
 
-    constructor(private _http:Http, appStore:AppStore) {
+    constructor(private filmService:FilmService, appStore:AppStore) {
         super(appStore);
     }
 
@@ -36,8 +32,7 @@ export class FilmActions extends Actions {
         return (dispatch) => {
             dispatch(this.requestFilms());
 
-            this._http.get(`${BASE_URL}`)
-                .map(result => result.json())
+            this.filmService.get()
                 .map(json => {
                     dispatch(this.receiveFilms(json.results));
                     dispatch(this.receiveNumberOfFilms(json.count));

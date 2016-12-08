@@ -20,6 +20,9 @@ import {CartView} from "./views/catalog/cart-view";
 import {AddPartsView} from "./views/catalog/add-part-view";
 import {SimpleList} from 'angular2-simple-list';
 
+import {UserService} from "./services/user.service";
+import {FilmService} from "./services/film.service";
+
 import {AppStore,createAppStoreFactoryWithOptions} from "angular2-redux";
 import reducers from "./reducers/app-reducer"
 import {PartActions} from "./actions/part-actions";
@@ -40,7 +43,7 @@ const appStoreFactory = createAppStoreFactoryWithOptions({
     RouterModule
   ],
   declarations: [AppComponent,ShoppingComponent, AdminComponent, FilmsComponent, UsersView, UserView, FilmSelectionView, FilmView, PartsView, CartView, AddPartsView, SimpleList],
-  providers: [PartActions, CartActions, UserActions, FilmActions, { provide: AppStore, useFactory: appStoreFactory }],
+  providers: [UserService, FilmService, PartActions, CartActions, UserActions, FilmActions, { provide: AppStore, useFactory: appStoreFactory }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,14 +1,14 @@
 import {Http} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Actions,AppStore} from "angular2-redux";
+import {UserService} from "../services/user.service";
 import 'rxjs/add/operator/map';
 
-type Types = "REQUEST_USERS" | "RECEIVE_USERS" | "CURRENT_USER" | "SET_FILM_FILTER";
-export const UserActionTypes = {
-    REQUEST_USERS: "REQUEST_USERS" as Types,
-    RECEIVE_USERS: "RECEIVE_USERS" as Types,
-    CURRENT_USER: "CURRENT_USER" as Types,
-    SET_FILM_FILTER: "SET_FILM_FILTER" as Types
+export enum UserActionTypes {
+    REQUEST_USERS = "REQUEST_USERS" as any,
+    RECEIVE_USERS = "RECEIVE_USERS" as any,
+    CURRENT_USER = "CURRENT_USER" as any,
+    SET_FILM_FILTER = "SET_FILM_FILTER" as any
 };
 
 export interface UserAction {
@@ -22,18 +22,14 @@ export interface UserAction {
 @Injectable()
 export class UserActions extends Actions {
 
-  constructor(private _http:Http, appStore:AppStore) {
+  constructor(private userService:UserService, appStore:AppStore) {
       super(appStore);
   }
 
     fetchUsers() {
-        const BASE_URL:string = "http://swapi.co/api/people/";
         return (dispatch) => {
             dispatch(this.requestUsers());
-
-            this._http.get(`${BASE_URL}`)
-                .map(result => result.json())
-                .map(json => json.results)
+            this.userService.get()
                 .map(result =>  dispatch(this.receiveUsers(result)))
                 .subscribe();
         };

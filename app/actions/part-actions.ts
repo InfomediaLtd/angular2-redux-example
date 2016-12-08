@@ -3,9 +3,8 @@ import {Actions,AppStore} from "angular2-redux";
 
 export const ADD_PART = 'ADD_PART';
 
-type Types = "ADD_PART";
-export const PartActionTypes = {
-    ADD_PART: "ADD_PART" as Types
+export enum PartActionTypes {
+    ADD_PART = "ADD_PART" as any
 };
 
 export interface PartAction {
